@@ -1,8 +1,9 @@
 export default function HeroTextPage(){
     return(
         <main className="px-5 py-3 ">
-            <p className="text-justify px-3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium perferendis, beatae adipisci tempore soluta voluptates amet? Perferendis nihil itaque neque veritatis culpa molestiae doloribus quae illum debitis iusto sint esse, laboriosam corporis? Doloremque facere quo, repellendus blanditiis numquam minima suscipit? Modi rem, aliquid illo aut laborum nisi ullam ad optio!
+            <p className="text-justify px-10 py-5 text-xl md:text-2xl">
+              <span className="text-3xl md:text-5xl font-bold">Elevate Your Style </span> with
+              <span className="text-3xl md:text-5xl font-bold"> Ugly By Choice</span> - where sophistication meets individuality. Our curated collection is designed to empower you to express your unique personality through fashion.
             </p>
         </main>
     )

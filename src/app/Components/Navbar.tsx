@@ -1,17 +1,22 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NavLink } from "./NavLink";
 import { nanoid } from "nanoid";
-import logo from '../../../public/logo.png'
-import { FaCartShopping } from "react-icons/fa6";
-import { RxAvatar } from "react-icons/rx";
+import logo from '../../../public/logo.png';
+import {RxHamburgerMenu,RxCross1 } from "react-icons/rx";
+
+import SidebarPage from "./Sidebar";
+import { useSearchParams } from "next/navigation";
+
 
 const Navbar = () => {
+  const[menu,setMenu] = useState(false);
   return (
     <>
-      <div>
-        <nav className="flex items-center justify-around my-2 ">
+      <div className=" border-b-2 border-gray-300 flex items-center justify-center">
+        <nav className="flex items-center justify-center my-2 ">
           {/* logo starts here  */}
           <div className="flex items-center justify-center ">
             <Link href={"/"} className="text-2xl">
@@ -25,7 +30,7 @@ const Navbar = () => {
           {/* logo ends here  */}
 
           {/* navigation menu starts here  */}
-          <ul>
+          {/* <ul>
           {[
               ["T-shirts", "products"]
             ].map(([title, url]) => (
@@ -37,31 +42,22 @@ const Navbar = () => {
                 <li>{title}</li>
               </NavLink>
             ))}
-          </ul>
+          </ul> */}
           {/* navigation menu ends here  */}
-          <div className="flex items-center gap-7">
-            <section>
-              {/* search bar will be here  */}
-              {/* <input className="border-2 border-gray-500 rounded px-3 py-1"/> */}
-            </section>
-            <section>
-              {/* cart icon will be here 
-               */}
-               <div className="flex items-center gap-3 bg-slate-400 px-3 py-1 rounded-xl">
-               <FaCartShopping className='text-3xl' />
-               <span className="bg-red-600 rounded-full px-2 py-1" >
-                <p className="text-white">0</p>
-               </span>
-               </div>
-
-            </section>
-            <section>
-              {/* login or profile will go here  */}
-               <RxAvatar className='text-3xl' />
-            </section>
-          </div>
+          
         </nav>
+         {
+          !menu ?
+         <RxHamburgerMenu className='text-3xl absolute ml-[85%] cursor-pointer' onClick={()=>{setMenu(prevState => !prevState)}} /> : <RxCross1 className='text-3xl absolute ml-[85%] cursor-pointer' onClick={()=>{setMenu(prevState => !prevState)}}/>
+        }
+          
       </div>
+      {
+        menu &&
+      <div className=" flex justify-end z-10 transition origin-right duration-1000 " >
+      <SidebarPage />
+      </div>
+      }
     </>
   );
 };
