@@ -17,7 +17,9 @@ export default function HomeSectionPage() {
           <div className=" hidden group-hover:block  ">
             <div className="bg-black absolute inset-0 opacity-30 "></div>
             <div className="absolute top-0 bottom-0 left-0 right-0 items-center justify-end  flex flex-col ">
-              <h1 className="text-white text-xl md:text-2xl font-bold">Want Oversized T-shirts ?</h1>
+              <h1 className="text-white text-xl md:text-2xl font-bold">
+                Want Oversized T-shirts ?
+              </h1>
               <button className="border-2 border-sky-600 px-4 py-2 my-10 rounded text-white hover:bg-sky-600 hover:scale-125 transition ease-in-out duration-150 ">
                 Buy now
               </button>
@@ -25,44 +27,44 @@ export default function HomeSectionPage() {
           </div>
         </section>
 
-        <div className="flex flex-col gap-5 ">
+        <div className="flex flex-col gap-2 md:gap-5 ">
           <section className=" h-[500px] overflow-hidden rounded-3xl relative">
             <Image
               src={HeroImage}
               alt="hero section Image"
               className="rounded-3xl"
             />
-             <div className="">
-                <div className="bg-black absolute inset-0 opacity-30  "></div>
-                <h1 className="absolute top-0 bottom-0 right-0 left-0 text-white text-3xl font-bold p-5 ">
-                  #Ugly by choice
-                </h1>
-              </div>
+            <div className="">
+              <div className="bg-black absolute inset-0 opacity-30  hidden sm:block  "></div>
+              <h1 className="absolute top-0 bottom-0 right-0 left-0 text-white text-2xl md:text-3xl font-bold p-5 ">
+                #Ugly by choice
+              </h1>
+            </div>
           </section>
 
           <div className="flex gap-3 ">
-            <section className="h-[200px] overflow-hidden rounded-3xl relative">
+            <section className="h-[200px] overflow-hidden  rounded-3xl relative">
               <Image
                 src={HeroImage2}
                 alt="hero section Image"
                 className="rounded-3xl"
               />
               <div className="">
-                <div className="bg-black absolute inset-0 opacity-30  "></div>
-                <h1 className="absolute top-0 bottom-0 right-0 left-0 text-white text-3xl font-bold p-5 mt-20  ">
+                <div className="bg-black absolute inset-0 opacity-30 hidden sm:block  "></div>
+                <h1 className="absolute top-0 bottom-0 right-0 left-0 text-white text-2xl md:text-3xl font-bold p-5 mt-20  ">
                   #Trending
                 </h1>
               </div>
             </section>
-            <section className="h-[200px] overflow-hidden rounded-3xl relative">
+            <section className="h-[200px] overflow-hidden  rounded-3xl relative">
               <Image
                 src={HeroImage3}
                 alt="hero section Image"
                 className="rounded-3xl"
               />
-              <div className="overflow-hidden">
-                <div className="bg-black absolute inset-0 opacity-30  "></div>
-                <h1 className="absolute top-0 bottom-0 right-0 left-0 text-white text-3xl font-bold p-5 mt-20  ">
+              <div className="">
+                <div className="bg-black absolute inset-0 opacity-30 hidden sm:block   "></div>
+                <h1 className="absolute top-0 bottom-0 right-0 left-0 text-white text-2xl md:text-3xl font-bold p-5 mt-20  ">
                   #Stylish
                 </h1>
               </div>
