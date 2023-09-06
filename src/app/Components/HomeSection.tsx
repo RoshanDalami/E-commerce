@@ -7,8 +7,8 @@ import HeroImage3 from "../../../public/assets/hero_image_3.jpg";
 export default function HomeSectionPage() {
   return (
     <>
-      <div className="flex flex-col  gap-4 px-5 py-3 md:flex-row ">
-        <section className="rounded-3xl group relative overflow-hidden cursor-pointer  ">
+      <div className="flex flex-col  gap-4 md:flex-row ">
+        <section className="rounded-3xl group relative overflow-hidden cursor-pointer md:w-[430%]  ">
           <Image
             src={HeroImage1}
             alt="hero section Image"

@@ -2,9 +2,12 @@ import ProductCard from "./Components/Card"
 import CategoriesPage from "./Components/Categories"
 import HeroTextPage from "./Components/HeroText"
 import HomeSectionPage from "./Components/HomeSection"
+import CartProvider from "./Store/CartProvider"
 
 export default function Home() {
   return (
+
+
   <main className=" overflow-hidden p-10">
     
     <HomeSectionPage/>

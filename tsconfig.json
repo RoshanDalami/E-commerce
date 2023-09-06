@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/store/UI-slice.js", "src/app/store/cart-slice.js", "src/app/store/Cartslice.ts", "src/app/store/provider.js"],
   "exclude": ["node_modules"]
 }
