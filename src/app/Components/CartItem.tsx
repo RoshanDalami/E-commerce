@@ -1,7 +1,7 @@
 import { PropsWithRef } from "react";
 
 const CartItem = (props:any) => {
-    const price = `$${props.price.toFixed(2)}`;
+    const price = `${props.price.toFixed(2)}`;
   
     return (
       <li className="text-black flex gap-10 items-center justify-evenly flex-wrap" >

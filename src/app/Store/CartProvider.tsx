@@ -17,6 +17,11 @@ interface CartState {
   items: CartItem[];
   totalAmount: number;
 }
+declare global {
+  interface Window {
+    localStorage: Storage;
+  }
+}
 
 
 //default state of the cart
@@ -78,7 +83,6 @@ const cartReducer = (state: any, action: any) => {
       totalAmount: 0,
     };
   }
-
   return defaultCartState;
 };
 
