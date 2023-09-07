@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import CartContext from "@/app/Store/Cart-context";
 import CartItem from "@/app/Components/CartItem";
 import { useRouter } from "next/navigation";
+import AddressForm from '@/app/Components/CustomerDetailsForm'
 
 
 const Cart = (props: any) => {
@@ -22,7 +23,7 @@ const Cart = (props: any) => {
   };
   const onOrder = () => {
     cartCtx.order();
-    console.log(cartCtx.items)
+    
 
     router.push("/orderplaced");
   };
@@ -36,6 +37,7 @@ const Cart = (props: any) => {
             title={item.title}
             price={item.price}
             amount={item.amount}
+            image={item.image}
             onRemove={cartItemRemoveHandler.bind(null, item.id)}
             onAdd={cartItemAddHandler.bind(null, item)}
           />
@@ -46,7 +48,8 @@ const Cart = (props: any) => {
 
   return (
     <div className="text-black mx-10 my-5 py-5 px-5 border-[1px] border-black rounded-lg">
-      <div className=" flex-wrap">
+      <div className="flex justify-between px-10 gap-7">
+        <div className="flex items-center flex-col">
         <h1 className="text-black font-bold text-3xl">Cart Items</h1>
         <div>
           {hasItems ? (
@@ -67,7 +70,7 @@ const Cart = (props: any) => {
         </div>
         <br />
         <br />
-        <div className="flex items-center  gap-6">
+        <div className="flex items-center flex-col md:flex-row gap-6">
           <h1 className="text-xl text-black font-semibold"> Total Amount : {totalAmount}</h1>
           <div className=" flex  gap-6 flex-wrap">
             <button
@@ -83,6 +86,13 @@ const Cart = (props: any) => {
             )}
           </div>
         </div>
+        </div>
+        {
+            hasItems &&
+        <div className="my-8 ">
+            <AddressForm/>
+        </div>
+        }
       </div>
     </div>
   );

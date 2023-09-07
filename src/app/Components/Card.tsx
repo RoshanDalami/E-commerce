@@ -1,25 +1,30 @@
 'use client'
 import Image from "next/image";
-import cardImage from "../../../public/assets/hero_image.jpg";
+
 import Link from "next/link";
+import { nanoid } from "nanoid";
 
-import { useContext,useState } from "react";
+import { PropsWithRef, PropsWithoutRef, useContext,useState } from "react";
 import CartContext from "../Store/Cart-context";
+import { AppProps } from "next/app";
+import { useSession } from "next-auth/react";
+import { useRouter,redirect } from "next/navigation";
 
 
 
-export default function ProductCard() {
+
+export default function ProductCard(props:any) {
   const cartCtx = useContext(CartContext);
-  const title = 'product'
-  const description = 'Product discription'
-  const price = 20
-  const id = 'sfsfsfs'
+  const {data:session} = useSession();
+  const router = useRouter();
+
   const addToCartHandler = (amount:any) => {
     cartCtx.addItem({
-     id:id,
-     title: title,
-     price: price,
+     id:props.id,
+     title: props.title,
+     price: props.price,
      amount: amount,
+     image:props.image
    });
    
  };
@@ -29,18 +34,17 @@ export default function ProductCard() {
   if (enteredAmount < 1) {
     return;
   }
+  if(!session || !session.user){
+    router.replace('/profile')
+    return
+  }
   try {
-    
-    addToCartHandler(enteredAmount);
+   addToCartHandler(enteredAmount);
   } catch (error) {
    console.log('error') 
   }
 
 };
-
-
-
-  
   return (
     <>
    
@@ -48,16 +52,16 @@ export default function ProductCard() {
         <Link href={''}>
         <div className="group rounded-lg w-[350px] overflow-hidden">
           <div className="w-[350px] h-[400px] group-hover:scale-125 transition duration-300">
-            <Image src={cardImage} alt="new" />
+            <Image src={props.image} alt="new" />
           </div>
           <div className="  shadow border-2 border-gray-400 flex flex-col overflow-hidden"></div>
         </div>
         </Link>
         <div className="bg-white px-4 py-2 rounded-lg ">
-          <h1 className="text-xl font-bold">{title}</h1>
-          <p className=" opacity-50">{description}</p>
+          <h1 className="text-xl font-bold">{props.title}</h1>
+          <p className=" opacity-50">{props.description}</p>
           <div className="flex justify-between items-center">
-            <p>{price}</p>
+            <p>{props.price}</p>
             <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300" onClick={onSubmitHandler} >add to cart</button>
           </div>
         </div>

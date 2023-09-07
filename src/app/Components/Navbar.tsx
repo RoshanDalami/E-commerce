@@ -10,25 +10,20 @@ import { RxAvatar } from "react-icons/rx";
 import { useContext } from "react";
 import CartContext from "../Store/Cart-context";
 import axios from 'axios'
+import {useSession } from 'next-auth/react'
 
 
 const Navbar = () => {
   const cartCtx = useContext(CartContext);
   const [cartItemNumber , setCartItemNumber] = useState([])
   const {items} = cartCtx;
+  const {data:session} = useSession();
   // const numberOfCartItems = items.reduce((curNumber,item:any)=>{
   //   return curNumber + item.amount ;
   // },0);
   const numberOfCartItems = items.reduce((curNumber, item:any)=>{
     return curNumber + item.amount;
   },0)
-  const getData = async()=>{
-
-    const response =  axios.get('https://testing-760a8-default-rtdb.asia-southeast1.firebasedatabase.app/cartitems.json')
-    const data = (await response).data;
-    setCartItemNumber(data)
-  }
-  useEffect(()=>{getData();},[cartItemNumber])
 
   return (
     <>
@@ -49,7 +44,7 @@ const Navbar = () => {
           {/* logo ends here  */}
 
           {/* navigation menu starts here  */}
-          <div className="flex gap-6 px-5">
+          <div className="flex gap-6 px-5 items-center">
             <section>
               {/* cart icon will be here
                */}
@@ -58,9 +53,13 @@ const Navbar = () => {
               <FaCartShopping className="text-3xl" />
                </Link>
             </section>
-            <section>
+            <section className="flex  items-center">
               {/* login or profile will go here  */}
+               
+            { (!session || !session.user) ?  (<Link href={'/profile'}>
               <RxAvatar className="text-3xl" />
+              </Link>) : ( <Link href={'/profile'}>
+               <Image src={session.user.image} alt="profile Image" width={50} height={50} className="rounded-full"/> </Link>)}
             </section>
           </div>
         </nav>
