@@ -3,26 +3,14 @@
 import React, { useReducer, useEffect } from "react";
 import CartContext from "./Cart-context";
 
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  amount: number;
-}
-
-interface CartState {
-  items: CartItem[];
-  totalAmount: number;
-}
-
 // Default state of the cart
-const defaultCartState: CartState = {
+const defaultCartState = {
   items: [],
   totalAmount: 0,
 };
 
 // Reducer function for managing cart state and actions
-const cartReducer = (state: CartState, action: any): CartState => {
+const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
@@ -76,10 +64,10 @@ const cartReducer = (state: CartState, action: any): CartState => {
   return defaultCartState;
 };
 
-const CartProvider = (props: any) => {
+const CartProvider = (props) => {
   // Load cart items and total amount from localStorage on component initialization
   const storedCartDataJSON = localStorage.getItem("cartData");
-  const storedCartData: CartState = storedCartDataJSON
+  const storedCartData = storedCartDataJSON
     ? JSON.parse(storedCartDataJSON)
     : defaultCartState;
 
@@ -94,11 +82,11 @@ const CartProvider = (props: any) => {
     localStorage.setItem("cartData", JSON.stringify(curState));
   }, [curState]);
 
-  const addItemToCartHandler = (item: CartItem) => {
+  const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
-  const removeItemFromCartHandler = (id: string) => {
+  const removeItemFromCartHandler = (id) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
