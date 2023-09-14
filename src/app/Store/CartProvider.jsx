@@ -4,7 +4,7 @@ import React, { useReducer, useEffect } from "react";
 import CartContext from "./Cart-context";
 
 // Default state of the cart
-const defaultCartState = {
+var defaultCartState = {
   items: [],
   totalAmount: 0,
 };
@@ -65,11 +65,16 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
+  const isClient = typeof window !== "undefined";
+  let storedCartData = defaultCartState;
   // Load cart items and total amount from localStorage on component initialization
-  const storedCartDataJSON = localStorage.getItem("cartData");
-  const storedCartData = storedCartDataJSON
-    ? JSON.parse(storedCartDataJSON)
-    : defaultCartState;
+  if(!isClient){
+
+    const storedCartDataJSON = localStorage.getItem("cartData");
+     storedCartData = storedCartDataJSON
+      ? JSON.parse(storedCartDataJSON)
+      : defaultCartState;
+  }
 
   // Initialize the cart state with the data from localStorage
   const [curState, dispatchCartAction] = useReducer(
@@ -79,7 +84,8 @@ const CartProvider = (props) => {
 
   // Update localStorage whenever the cart state changes
   useEffect(() => {
-    localStorage.setItem("cartData", JSON.stringify(curState));
+    if (isClient) {
+      localStorage.setItem("cartData", JSON.stringify(curState));}
   }, [curState]);
 
   const addItemToCartHandler = (item) => {
