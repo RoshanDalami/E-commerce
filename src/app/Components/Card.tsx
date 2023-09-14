@@ -4,18 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { nanoid } from "nanoid";
 
-import { PropsWithRef, PropsWithoutRef, useContext,useState } from "react";
+import {  useContext } from "react";
 import CartContext from "../Store/Cart-context";
-import { AppProps } from "next/app";
-import { useSession } from "next-auth/react";
 import { useRouter,redirect } from "next/navigation";
-
-
-
+import toast from "react-hot-toast";
+import { UserAuth } from "../Context/AuthContext";
 
 export default function ProductCard(props:any) {
+  const {user}:any = UserAuth();
   const cartCtx = useContext(CartContext);
-  const {data:session} = useSession();
   const router = useRouter();
 
   const addToCartHandler = (amount:any) => {
@@ -34,12 +31,13 @@ export default function ProductCard(props:any) {
   if (enteredAmount < 1) {
     return;
   }
-  if(!session || !session.user){
+  if(!user){
     router.replace('/profile')
     return
   }
   try {
    addToCartHandler(enteredAmount);
+   toast.success('Item has been added to cart')
   } catch (error) {
    console.log('error') 
   }
@@ -52,7 +50,7 @@ export default function ProductCard(props:any) {
         <Link href={''}>
         <div className="group rounded-lg w-[350px] overflow-hidden">
           <div className="w-[350px] h-[400px] group-hover:scale-125 transition duration-300">
-            <Image src={props.image} alt="new" />
+            <Image src={props.image} alt="new" width={350} height={300} />
           </div>
           <div className="  shadow border-2 border-gray-400 flex flex-col overflow-hidden"></div>
         </div>
@@ -61,7 +59,7 @@ export default function ProductCard(props:any) {
           <h1 className="text-xl font-bold">{props.title}</h1>
           <p className=" opacity-50">{props.description}</p>
           <div className="flex justify-between items-center">
-            <p>{props.price}</p>
+            <p>Rs.{' '}{props.price}</p>
             <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300" onClick={onSubmitHandler} >add to cart</button>
           </div>
         </div>
