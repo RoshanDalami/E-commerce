@@ -71,7 +71,7 @@ export default function IndividualProduct() {
         className="text-3xl mt-10 ml-10 cursor-pointer"
         onClick={onBackHandler}
       />
-      <main className="mx-20 flex items-center justify-center h-[90vh]">
+      <main className="md:mx-20 flex items-center justify-center h-[90vh]">
         <div className="flex flex-col md:flex-row   gap-6   bg-white shadow-2xl  md:w-[800px]   rounded-lg p-10">
           <div>
             <Image
@@ -82,7 +82,7 @@ export default function IndividualProduct() {
               className="rounded-lg"
             />
           </div>
-          <div className="md:ml-20 md:flex  md:flex-col justify-around">
+          <div className="md:ml-12 md:flex  md:flex-col justify-around">
             <div className="flex flex-col gap-2 md:gap-10">
               <h1 className="text-3xl font-bold">{individualProduct?.title}</h1>
               <h1 className=" opacity-60">{individualProduct?.description}</h1>
