@@ -59,6 +59,7 @@ const Cart = (props: any) => {
       const dbRef = collection(db, "orders");
       await addDoc(dbRef, { items, totalAmount, uid: payload, address });
       console.log("order complete");
+      console.log(items)
 
       cartCtx.order();
       router.push("/orderplaced");
