@@ -88,7 +88,7 @@ export default function IndividualProduct() {
               <h1 className=" opacity-60">{individualProduct?.description}</h1>
               <h1 className="text-xl"> Rs {individualProduct?.price}</h1>
             </div>
-            <div className="flex gap-10  ">
+            <div className="flex gap-2  ">
               <div className="flex gap-2 p-2 items-center">
                 <p className="text-sm">Select size</p>
                 <select
@@ -107,7 +107,7 @@ export default function IndividualProduct() {
                 </select>
               </div>
               <button
-                className="md:px-6 px-3 py-1 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300"
+                className="md:px-6 px-3 py-1 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300 text-sm"
                 onClick={onSubmitHandler}
               >
                 add to cart
