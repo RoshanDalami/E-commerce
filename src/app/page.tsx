@@ -70,7 +70,7 @@ export default function Home() {
   const getProducts = async () => {
     const dbRef = collection(db, "Products");
     const response = await getDocs(dbRef);
-    const data = response.docs.map((doc) => ({ ...doc.data() }));
+    const data = response.docs.map((doc) => ({ ...doc.data(),id:doc.id }));
     setProducts(data);
   };
   useEffect(() => {
@@ -98,7 +98,7 @@ export default function Home() {
                 price={item.price}
                 title={item.title}
                 description={item.description}
-                id={nanoid()}
+                id={item.id}
               />
             );
           })}

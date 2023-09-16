@@ -46,7 +46,7 @@ export default function ProductCard(props: any) {
   return (
     <>
       <div className="w-[350px] shadow-lg  ">
-        <Link href={""}>
+        <Link href={`/${props.id}`}>
           <div className="group rounded-lg w-[350px] overflow-hidden">
             <div className="w-[350px] h-[400px] group-hover:scale-125 transition duration-300">
               <Image src={props.image} alt="new" width={350} height={300} />

@@ -67,8 +67,6 @@ const Cart = (props: any) => {
       console.log("error" + error);
     }
   };
-
-  console.log(address);
   const cartItems = (
     <ul style={{ color: "white" }}>
       {cartCtx.items.map((item: any) => {
