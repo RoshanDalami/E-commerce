@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState, useContext } from "react";
 import { db } from "../firebase/config";
-import {doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useParams } from "next/navigation";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import Carousel from "react-bootstrap/Carousel";
 import Image from "next/image";
 import { BiArrowBack } from "react-icons/bi";
 import CartContext from "../Store/Cart-context";
@@ -17,6 +18,13 @@ export default function IndividualProduct() {
   const cartCtx = useContext(CartContext);
   const router = useRouter();
   const [size, setSize] = useState("small");
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   const [individualProduct, setIndividualProduct] = useState({
     imageulr: "",
@@ -65,22 +73,54 @@ export default function IndividualProduct() {
   const onBackHandler = () => {
     router.push("/");
   };
+  console.log(individualProduct);
   return (
     <>
       <BiArrowBack
         className="text-3xl mt-10 ml-10 cursor-pointer"
         onClick={onBackHandler}
       />
-      <main className="md:mx-20 flex items-center justify-center h-[90vh]">
-        <div className="flex flex-col md:flex-row   gap-6   bg-white shadow-2xl  md:w-[800px]   rounded-lg p-10">
-          <div>
-            <Image
-              src={individualProduct?.imageulr}
-              alt="Product Image"
-              height={400}
-              width={400}
-              className="rounded-lg"
-            />
+      <main className="md:mx-20 flex  items-center justify-center h-[90vh]">
+        <div className="flex flex-col md:flex-row    gap-6   bg-white shadow-2xl  md:w-[900px]   rounded-lg p-10">
+          <div className="w-[300px] flex  overflow-scroll gap-10 ">
+            <Carousel>
+              <Carousel.Item>
+                <Image
+                  src={individualProduct?.imageulr}
+                  alt="Product Image"
+                  height={400}
+                  width={400}
+                  className="rounded-lg"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <Image
+                  src={individualProduct?.imageulr1}
+                  alt="Product Image"
+                  height={400}
+                  width={400}
+                  className="rounded-lg"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <Image
+                  src={individualProduct?.imageulr2}
+                  alt="Product Image"
+                  height={400}
+                  width={400}
+                  className="rounded-lg"
+                />
+              </Carousel.Item>
+              <Carousel.Item>
+                <Image
+                  src={individualProduct?.imageulr3}
+                  alt="Product Image"
+                  height={400}
+                  width={400}
+                  className="rounded-lg"
+                />
+              </Carousel.Item>
+            </Carousel>
           </div>
           <div className="md:ml-12 md:flex  md:flex-col justify-around">
             <div className="flex flex-col gap-2 md:gap-10">
