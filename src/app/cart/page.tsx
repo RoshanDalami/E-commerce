@@ -3,11 +3,12 @@ import React, { useContext, useEffect, useState, useCallback } from "react";
 import CartContext from "@/app/Store/Cart-context";
 import CartItem from "@/app/Components/CartItem";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 import toast from "react-hot-toast";
 import { db } from "@/app/firebase/config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { UserAuth } from "../Context/AuthContext";
+import EmptyCard from '../../../public/svgFiles/empty_cart.svg'
 
 const Cart = (props: any) => {
   const cartCtx = useContext(CartContext);
@@ -86,29 +87,30 @@ const Cart = (props: any) => {
   );
 
   return (
-    <div className="text-black mx-10 my-5 py-5 px-5 border-[1px] border-black rounded-lg">
-      <div className="flex justify-center items-center px-10 gap-20 ">
+    <>
+    <div className="text-black mx-5 my-5 py-5 md:px-5 border-[1px] border-black rounded-lg">
+      <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
         <div className="flex items-center flex-col">
-          <h1 className="text-black font-bold text-3xl">Cart Items</h1>
+          {
+            hasItems ? 
+          <h1 className="text-black font-bold text-3xl">Cart Items</h1> : ''
+          }
           <div className="">
             {hasItems ? (
               cartItems
             ) : (
-              <h2 className="text-black font-bold text-2xl text-center">
-                Your Cart is Empty...
-                <br />
-                <p
-                  onClick={goToProducts}
-                  className="font-normal underline cursor-pointer"
-                >
-                  {" "}
-                  Go to products
-                </p>
-              </h2>
+              <main>
+                <div>
+                  <Image src={EmptyCard} alt="" width={300} height={300} className="py-8 "/>
+                  <h1 className=" md:text-3xl font-semibold opacity-50 text-center">Your card is empty</h1>
+                </div>
+              </main>
             )}
           </div>
           <br />
           <br />
+          {
+            hasItems ?
           <div className="flex items-center flex-col md:flex-row gap-6">
             <h1 className="text-xl text-black font-semibold">
               {" "}
@@ -130,10 +132,18 @@ const Cart = (props: any) => {
                 </button>
               )}
             </div>
-          </div>
+          </div> : ''
+          }
         </div>
       </div>
     </div>
+    {!hasItems ? 
+    
+    <div className="mx-10">
+        <h1 className="text-2xl ">Continue shopping with us</h1>
+    </div> :''
+  }
+    </>
   );
 };
 
