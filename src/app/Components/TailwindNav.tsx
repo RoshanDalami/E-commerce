@@ -36,14 +36,14 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: "#",
+          href: '/comingsoon',
           imageSrc: image1,
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
         },
         {
           name: "Basic Tees",
-          href: "#",
+          href: "/comingsoon",
           imageSrc: image1,
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
