@@ -7,7 +7,7 @@ import CartProvider from "./Store/CartProvider";
 import { getServerSession } from "next-auth";
 import { Toaster } from "react-hot-toast";
 import { AuthContextProvider } from "./Context/AuthContext";
-import Footer from "./Components/Footer";
+import Footer from "./Components/FooterMobile";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default  function RootLayout({
             <Toaster position="top-center" reverseOrder={false} />
             <Navbar />
             {children}
+            <Footer/>
           </CartProvider>
         </AuthContextProvider>
       </body>

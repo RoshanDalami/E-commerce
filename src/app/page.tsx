@@ -4,65 +4,11 @@ import ProductCard from "./Components/Card";
 import CategoriesPage from "./Components/Categories";
 import HeroTextPage from "./Components/HeroText";
 import HomeSectionPage from "./Components/HomeSection";
-import CartProvider from "./Store/CartProvider";
 import { nanoid } from "nanoid";
-import cardImage from "../../public/assets/hero_image.jpg";
 import { useEffect, useState } from "react";
 import { db } from "./firebase/config";
 import { getDocs, collection } from "firebase/firestore";
-import Footer from "./Components/Footer";
 
-const DATA = [
-  {
-    id: nanoid(),
-    title: "Product 1",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-  {
-    id: nanoid(),
-    title: "Product 2",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-  {
-    id: nanoid(),
-    title: "Product 3",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-  {
-    id: nanoid(),
-    title: "Product 4",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-  {
-    id: nanoid(),
-    title: "Product 5",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-  {
-    id: nanoid(),
-    title: "Product 6",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-  {
-    id: nanoid(),
-    title: "Product 7",
-    description: "Product Description",
-    price: 900,
-    image: cardImage,
-  },
-];
 
 export default function Home() {
   const [products, setProducts] = useState([{}]);
@@ -70,13 +16,12 @@ export default function Home() {
   const getProducts = async () => {
     const dbRef = collection(db, "Products");
     const response = await getDocs(dbRef);
-    const data = response.docs.map((doc) => ({ ...doc.data(),id:doc.id }));
+    const data = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     setProducts(data);
   };
   useEffect(() => {
     getProducts();
   }, []);
-
   return (
     <>
       <main className=" overflow-hidden p-10">
@@ -104,7 +49,6 @@ export default function Home() {
           })}
         </div>
       </main>
-      <Footer />
     </>
   );
 }

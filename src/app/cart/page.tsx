@@ -7,8 +7,10 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { db } from "@/app/firebase/config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
+import Link from "next/link";
 import { UserAuth } from "../Context/AuthContext";
 import EmptyCard from '../../../public/svgFiles/empty_cart.svg'
+import ProductsItems from "../Components/ProductsItems";
 
 const Cart = (props: any) => {
   const cartCtx = useContext(CartContext);
@@ -137,12 +139,18 @@ const Cart = (props: any) => {
         </div>
       </div>
     </div>
-    {!hasItems ? 
     
-    <div className="mx-10">
+    <div className="mx-10  hidden md:block">
         <h1 className="text-2xl ">Continue shopping with us</h1>
-    </div> :''
-  }
+        <ProductsItems />
+    </div> 
+    <div className="  md:hidden my-10">
+      <div className="border-b-2 border-t-2 border-gray-500 mx-6 py-5">
+        <Link href={'/'} className="text-2xl">
+        continue shopping {"->"}
+        </Link>
+      </div>
+    </div>
     </>
   );
 };

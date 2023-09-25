@@ -81,7 +81,7 @@ export default function IndividualProduct() {
         onClick={onBackHandler}
       />
       <main className="md:mx-20 flex  items-center justify-center h-[90vh]">
-        <div className="flex flex-col md:flex-row    gap-6   bg-white shadow-2xl  md:w-[900px]   rounded-lg p-10">
+        <div className="flex flex-col md:flex-row    gap-6   bg-white shadow-sm md:shadow-2xl  md:w-[900px]   rounded-lg p-10">
           <div className="w-[300px] flex  overflow-scroll gap-10 ">
             <Carousel>
               <Carousel.Item>
