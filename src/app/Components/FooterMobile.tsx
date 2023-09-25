@@ -9,14 +9,14 @@ export default function Footer() {
     <main className=" sticky bottom-[0vh] z-50">
       <footer>
         <nav className="bg-white border-t-[1px] border-gray-500  pt-4  h-[70px] flex items-center justify-center gap-10">
-          <div className="flex flex-col items-center justify-center">
-            <Link href={'/'}>
+          <div >
+            <Link href={'/'} className="flex flex-col items-center justify-center">
                 <AiOutlineHome className="text-3xl"  />
                 <span className="text-sm">Home</span>
             </Link>
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <Link href={'/categories'}>
+          <div >
+            <Link href={'/categories'} className="flex flex-col items-center justify-center">
                 <BiCategoryAlt className="text-3xl"  />
                 <span className="text-sm">Categories</span>
             </Link>
@@ -25,14 +25,14 @@ export default function Footer() {
                 <AiOutlineSearch className="text-3xl"  />
                 <span>Search</span>
           </div> */}
-          <div className="flex flex-col items-center justify-center">
-            <Link href={'/categories'}>
+          <div >
+            <Link href={'/categories'} className="flex flex-col items-center justify-center">
                 <BsRocketTakeoff className="text-3xl"  />
                 <span className="text-sm">Explore</span>
             </Link>
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <Link href={'/profile'}>
+          <div >
+            <Link href={'/profile'} className="flex flex-col items-center justify-center">
                 <BsPerson className="text-3xl"  />
                 <span className="text-sm">Profile</span>
             </Link>
