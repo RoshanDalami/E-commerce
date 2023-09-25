@@ -55,6 +55,7 @@ export default function SignupForm() {
             <input
               className="px-4 py-2 rounded-md ring-1 ring-gray-500"
               type="text"
+              placeholder="username"
               name="username"
               value={userDetails.username}
               onChange={(e) =>
@@ -71,6 +72,7 @@ export default function SignupForm() {
               className="px-4 py-2 rounded-md ring-1 ring-gray-500"
               type="email"
               name="email"
+              placeholder="email"
               value={userDetails.email}
               onChange={(e) =>
                 setUserDetails({ ...userDetails, email: e.target.value })
@@ -86,6 +88,7 @@ export default function SignupForm() {
               className="px-4 py-2 rounded-md ring-1 ring-gray-500"
               type="password"
               name="password"
+              placeholder="password"
               value={userDetails.password}
               onChange={(e) =>
                 setUserDetails({ ...userDetails, password: e.target.value })
