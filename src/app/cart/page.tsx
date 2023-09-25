@@ -89,7 +89,7 @@ const Cart = (props: any) => {
   );
 
   return (
-    <>
+    <main className="min-h-screen">
     <div className="text-black mx-5 my-5 py-5 md:px-5 border-[1px] border-black rounded-lg">
       <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
         <div className="flex items-center flex-col">
@@ -102,7 +102,7 @@ const Cart = (props: any) => {
               cartItems
             ) : (
               <main>
-                <div>
+                <div >
                   <Image src={EmptyCard} alt="" width={300} height={300} className="py-8 "/>
                   <h1 className=" md:text-3xl font-semibold opacity-50 text-center">Your card is empty</h1>
                 </div>
@@ -151,7 +151,7 @@ const Cart = (props: any) => {
         </Link>
       </div>
     </div>
-    </>
+    </main>
   );
 };
 

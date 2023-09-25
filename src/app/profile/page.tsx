@@ -29,11 +29,11 @@ export default function Profile() {
   if (!user) {
     return (
       <>
-        <div className="flex  items-center justify-center text-black gap-3 p-5 rounded ">
+        <div className="flex  items-center justify-center text-black gap-3 p-5 rounded min-h-screen ">
           <div className="hidden md:block ">
           <Image src={login}  alt=""/>
           </div>
-          <div className=" flex items-center justify-center  flex-col gap-3 shadow-lg mt-10 md:mt-5 p-10">
+          <div className=" flex items-center justify-center  flex-col gap-3 shadow-lg  md:mt-5 w-full py-10">
 
             <Image src={logo} alt="" width={100} height={100} />
             <SigninForm />
@@ -56,7 +56,7 @@ export default function Profile() {
     router.replace("/");
   };
   return (
-    <div className="flex flex-col items-center justify-center gap-6">
+    <div className="flex flex-col items-center justify-center gap-6 min-h-screen">
       {
         <>
           <div className="flex items-center justify-center flex-col">

@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import { Toaster } from "react-hot-toast";
 import { AuthContextProvider } from "./Context/AuthContext";
 import Footer from "./Components/FooterMobile";
+import TailwindNav from "./Components/TailwindNav";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
@@ -27,7 +28,8 @@ export default  function RootLayout({
         <AuthContextProvider>
           <CartProvider>
             <Toaster position="top-center" reverseOrder={false} />
-            <Navbar />
+            {/* <Navbar /> */}
+            <TailwindNav/>
             {children}
             <Footer/>
           </CartProvider>

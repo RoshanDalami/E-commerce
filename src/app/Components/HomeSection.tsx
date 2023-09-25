@@ -15,7 +15,7 @@ export default function HomeSectionPage() {
   }
   return (
     <>
-      <div className="flex flex-col  gap-4 md:flex-row ">
+      <div className="flex flex-col  gap-4 md:flex-row -z-10 ">
         <section className="rounded-3xl group relative overflow-hidden cursor-pointer md:w-[430%]  ">
           <Image
             src={HeroImage1}

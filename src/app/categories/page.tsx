@@ -1,9 +1,11 @@
 import React from 'react'
-
+import Link from 'next/link'
 export default function Categories() {
   return (
-    <div>
-      <h1>Hello this is categories page</h1>
-    </div>
+    <main className='min-h-screen'>
+        <div>
+
+        </div>
+    </main>
   )
 }
