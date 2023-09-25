@@ -4,6 +4,8 @@ import { auth } from "@/app/firebase/config";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
+import Image from "next/image";
+import signupsvg from '../../../public/svgFiles/signup.svg'
 
 export default function SignupForm() {
   const [userDetails, setUserDetails] = useState({
@@ -11,6 +13,7 @@ export default function SignupForm() {
     email: "",
     password: "",
   });
+  const [error,setError] = useState(false)
   const router = useRouter();
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -33,20 +36,24 @@ export default function SignupForm() {
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorMessage)
+    setError(true)
     // ..
   });
     
   };
   return (
-    <main className=" flex h-[90vh] items-center justify-center">
-      <div className="w-[600px] bg-[#D8B4F8] p-24 rounded-lg flex flex-col gap-6">
+    <main className=" flex h-[90vh] w-[390px] md:w-full items-center justify-center">
+      <div className=" hidden md:block">
+        <Image src={signupsvg} alt="signup vector svg" />
+      </div>
+      <div className=" w-full mx-5 md:w-[600px] rounded-lg flex flex-col gap-6 ">
         <form onSubmit={onSubmitHandler} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor="username" className="text-lg">
               username
             </label>
             <input
-              className="px-4 py-2 rounded-md"
+              className="px-4 py-2 rounded-md ring-1 ring-gray-500"
               type="text"
               name="username"
               value={userDetails.username}
@@ -61,7 +68,7 @@ export default function SignupForm() {
               email
             </label>
             <input
-              className="px-4 py-2 rounded-md"
+              className="px-4 py-2 rounded-md ring-1 ring-gray-500"
               type="email"
               name="email"
               value={userDetails.email}
@@ -76,7 +83,7 @@ export default function SignupForm() {
               password
             </label>
             <input
-              className="px-4 py-2 rounded-md"
+              className="px-4 py-2 rounded-md ring-1 ring-gray-500"
               type="password"
               name="password"
               value={userDetails.password}
@@ -96,7 +103,7 @@ export default function SignupForm() {
         <div className="flex items-center justify-center">
             <p className=" opacity-60">Already have an account {'->'}  </p>
               <Link href={'/profile'}>
-            <span className="font-bold text-[#793FDF] cursor-pointer ">{" "}sign in</span>
+            <span className="font-bold text-[#793FDF] cursor-pointer ">{" "}Login</span>
               </Link>
         </div>
       </div>

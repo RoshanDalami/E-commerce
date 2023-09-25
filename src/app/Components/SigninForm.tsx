@@ -11,6 +11,7 @@ export default function SigninForm() {
     email: "",
     password: "",
   });
+  const [error,setError] = useState('');
   const router = useRouter();
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
@@ -32,12 +33,19 @@ export default function SigninForm() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage);
+        setError(errorMessage);
+        setUserDetails({
+          username: "",
+          email: "",
+          password: "",
+        });
       });
   };
   return (
     <main className=" flex  items-center justify-center">
-      <div className="w-[600px]  rounded-lg flex flex-col gap-6">
+      <div className="md:w-[600px]  rounded-lg flex flex-col gap-6">
         <form onSubmit={onSubmitHandler} className="flex flex-col gap-6">
+          {error && <span className="text-red-600 font-bold">{error}</span> }
           <div className="flex flex-col gap-2">
             <label htmlFor="email" className="text-lg">
               email
@@ -74,7 +82,7 @@ export default function SigninForm() {
             className="bg-blue-600 py-2 text-white rounded-md"
             type="submit"
           >
-            Sign up
+            Login
           </button>
         </form>
         <div className="flex items-center justify-center">
