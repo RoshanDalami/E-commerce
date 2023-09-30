@@ -9,6 +9,7 @@ import CartContext from "../Store/Cart-context";
 import { useRouter, redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { UserAuth } from "../Context/AuthContext";
+import axios from 'axios'
 
 export default function ProductCard(props: any) {
   const { user }: any = UserAuth();

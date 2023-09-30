@@ -4,7 +4,7 @@ export default function Categories() {
   return (
     <main className='min-h-screen'>
         <div>
-
+          This is category page
         </div>
     </main>
   )
