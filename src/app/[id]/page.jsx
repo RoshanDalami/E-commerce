@@ -3,8 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { db } from "../firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { useParams } from "next/navigation";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Carousel from "react-bootstrap/Carousel";
+import SliderSingle from './SingleCarousel'
 import Image from "next/image";
 import { BiArrowBack } from "react-icons/bi";
 import CartContext from "../Store/Cart-context";
@@ -82,9 +81,9 @@ export default function IndividualProduct() {
       />
       <main className="md:mx-20 flex  items-center justify-center h-[90vh]">
         <div className="flex flex-col md:flex-row    gap-6   bg-white shadow-sm md:shadow-2xl  md:w-[900px]   rounded-lg p-10">
-          <div className="w-[300px] flex  overflow-scroll gap-10 ">
-            <Carousel>
-              <Carousel.Item>
+          <div className="w-[300px]  ">
+            <SliderSingle>
+              
                 <Image
                   src={individualProduct?.imageulr}
                   alt="Product Image"
@@ -92,8 +91,8 @@ export default function IndividualProduct() {
                   width={400}
                   className="rounded-lg"
                 />
-              </Carousel.Item>
-              <Carousel.Item>
+              
+             
                 <Image
                   src={individualProduct?.imageulr1}
                   alt="Product Image"
@@ -101,8 +100,8 @@ export default function IndividualProduct() {
                   width={400}
                   className="rounded-lg"
                 />
-              </Carousel.Item>
-              <Carousel.Item>
+              
+              
                 <Image
                   src={individualProduct?.imageulr2}
                   alt="Product Image"
@@ -110,8 +109,8 @@ export default function IndividualProduct() {
                   width={400}
                   className="rounded-lg"
                 />
-              </Carousel.Item>
-              <Carousel.Item>
+              
+              
                 <Image
                   src={individualProduct?.imageulr3}
                   alt="Product Image"
@@ -119,8 +118,8 @@ export default function IndividualProduct() {
                   width={400}
                   className="rounded-lg"
                 />
-              </Carousel.Item>
-            </Carousel>
+  
+            </SliderSingle>
           </div>
           <div className="md:ml-12 md:flex  md:flex-col justify-around">
             <div className="flex flex-col gap-2 md:gap-10">

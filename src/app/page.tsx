@@ -23,11 +23,14 @@ export default function Home() {
   }, []);
   return (
     <>
-      <main className=" overflow-hidden p-10">
+      <main className=" overflow-hidden ">
+        <div className="py-8 ">
+
         <HomeSectionPage />
+        </div>
 
         <div className="px-4 py-10 md:px-5 md:py-3">
-          <span className="text-4xl font-bold px-6 md:px-10">Shop Here</span>
+          <span className="text-4xl font-bold px-2 md:px-10">Shop Here</span>
         </div>
         <div id="products">
           <CategoriesPage />

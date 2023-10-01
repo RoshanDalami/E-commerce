@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { PropsWithRef } from "react";
 import { PropsWithChildren } from "react";
 
-function SampleNextArrow(props:any) {
+function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
       <div
@@ -15,7 +15,7 @@ function SampleNextArrow(props:any) {
     );
   }
 
-  function SamplePrevArrow(props:any) {
+  function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
       <div
@@ -26,13 +26,13 @@ function SampleNextArrow(props:any) {
     );
   }
 
-export default function SliderComp({children}:PropsWithChildren){
+export default function SliderSingle({children}){
     const settings = {
         dots: true,
         autoplay: true,
       autoplaySpeed: 3000,
         infinite: true,
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
@@ -40,7 +40,7 @@ export default function SliderComp({children}:PropsWithChildren){
             {
               breakpoint: 1024,
               settings: {
-                slidesToShow: 3,
+                slidesToShow: 1,
                 slidesToScroll: 1,
                 infinite: true,
                 dots: true
