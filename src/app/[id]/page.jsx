@@ -83,7 +83,6 @@ export default function IndividualProduct() {
         <div className="flex flex-col md:flex-row    gap-6   bg-white shadow-sm md:shadow-2xl  md:w-[900px]   rounded-lg p-10">
           <div className="w-[300px]  ">
             <SliderSingle>
-              
                 <Image
                   src={individualProduct?.imageulr}
                   alt="Product Image"
@@ -100,8 +99,6 @@ export default function IndividualProduct() {
                   width={400}
                   className="rounded-lg"
                 />
-              
-              
                 <Image
                   src={individualProduct?.imageulr2}
                   alt="Product Image"

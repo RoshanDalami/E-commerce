@@ -14,9 +14,9 @@ export default function OrderPlaced(){
         },1000)
     }
 
-    useEffect(()=>{
-        onOrderPlaced();
-    },[])
+    // useEffect(()=>{
+    //     onOrderPlaced();
+    // },[])
 
     return (
         <Box textAlign="center" py={10} px={6}>

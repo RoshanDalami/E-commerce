@@ -17,8 +17,13 @@ const Cart = (props: any) => {
   const [address, setAddress]: any = useState({});
   const { user }: any = UserAuth();
   const router = useRouter();
-  const totalAmount = `Rs ${cartCtx.totalAmount.toFixed(2)}`;
+  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
+  const [userCouponCode, setUserCouponCode] = useState("");
+  const [systemCoupon, setSystemCoupon] = useState([{}]);
+  const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [couponError, setCouponError] = useState("");
+  const [amountAfterDiscount,setAmountAfterDiscount] = useState(0);
 
   const cartItemRemoveHandler = (id: string) => {
     cartCtx.removeItem(id);
@@ -52,24 +57,60 @@ const Cart = (props: any) => {
   }, [getAddress]);
   const onOrder = async () => {
     const items = cartCtx.items;
-    const totalAmount = cartCtx.totalAmount;
+    let totalAmount = cartCtx.totalAmount;
     const payload = user?.uid;
     if (Object.keys(address).length === 0) {
       router.replace("/address");
       return;
+    }
+    if(discountPercentage>0){
+      totalAmount = amountAfterDiscount
     }
     try {
       const dbRef = collection(db, "orders");
       await addDoc(dbRef, { items, totalAmount, uid: payload, address });
       console.log("order complete");
       console.log(items);
-
       cartCtx.order();
       router.push("/orderplaced");
     } catch (error) {
       console.log("error" + error);
     }
   };
+  const coupons = async () => {
+    try {
+      const dbRef = collection(db, "coupon");
+      const response = await getDocs(dbRef);
+      const data = response.docs.map((doc) => ({ ...doc.data() }));
+      setSystemCoupon(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    coupons();
+  }, []);
+  const onApplyCoupon = () => {
+    systemCoupon.forEach((element:any) => {
+      if (element?.code === userCouponCode) {
+        console.log(element?.code);
+        setDiscountPercentage(Number(element?.discount));
+        const discountedAmount = (discountPercentage / 100) * +totalAmount;
+        const totalAmountAfterDiscount = +totalAmount - discountedAmount;
+        console.log(totalAmountAfterDiscount);
+        setAmountAfterDiscount(totalAmountAfterDiscount)
+        setCouponError('')
+      } else {
+        console.log("not matched");
+        setCouponError('Invalid coupon')
+      }
+    });
+    // console.log(systemCoupon)
+    console.log(userCouponCode);
+    
+  };
+  console.log(typeof discountPercentage);
+
   const cartItems = (
     <ul style={{ color: "white" }}>
       {cartCtx.items.map((item: any) => {
@@ -87,6 +128,7 @@ const Cart = (props: any) => {
       })}
     </ul>
   );
+  console.log(systemCoupon, "system coupon");
 
   return (
     <main className="min-h-screen">
@@ -122,9 +164,29 @@ const Cart = (props: any) => {
             <br />
             {hasItems ? (
               <div className="flex items-center flex-col md:flex-row gap-6">
+                <div>
+                  <h1 className="text-2xl">use coupon</h1>
+                  <input
+                    type="text"
+                    value={userCouponCode}
+                    onChange={(e) =>
+                      setUserCouponCode(e.target.value.toUpperCase())
+                    }
+                    className="border-2 border-gray-300 rounded-md px-2 py-2 uppercase "
+                    placeholder="apply coupon"
+                  />
+                  <button
+                    className="px-4 py-2 bg-blue-600 rounded-lg text-white"
+                    onClick={onApplyCoupon}
+                  >
+                    Apply
+                  </button>
+                </div>
+                {couponError && <p className="text-red-600">{couponError}</p>}
                 <h1 className="text-xl text-black font-semibold">
                   {" "}
-                  Total Amount : {totalAmount}
+                  Total Amount :{" "}
+                  {amountAfterDiscount>0 ? amountAfterDiscount : +totalAmount}
                 </h1>
                 <div className=" flex  gap-6 flex-wrap">
                   <button
