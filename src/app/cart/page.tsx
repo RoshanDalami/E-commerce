@@ -154,7 +154,7 @@ const Cart = (props: any) => {
                       className="py-8 "
                     />
                     <h1 className=" md:text-3xl font-semibold opacity-50 text-center">
-                      Your card is empty
+                      Your cart is empty
                     </h1>
                   </div>
                 </main>

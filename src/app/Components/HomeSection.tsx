@@ -18,16 +18,16 @@ export default function HomeSectionPage() {
     <>
       <div>
           <SliderComp >
-            <div className="px-5">
+            <div className="">
               <Image src={HeroImage} alt="test"/>
             </div>
-            <div className="px-5">
+            <div className="">
               <Image src={HeroImage1} alt="test"/>
             </div>
-            <div className="px-5">
+            <div className="">
               <Image src={HeroImage2} alt="test"/>
             </div>
-            <div className="px-5">
+            <div className="">
               <Image src={HeroImage3} alt="test"/>
             </div>
           </SliderComp>

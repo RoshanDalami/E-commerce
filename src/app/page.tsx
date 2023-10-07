@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <>
       <main className=" overflow-hidden ">
-        <div className="py-8 ">
+        <div className=" ">
 
         <HomeSectionPage />
         </div>
