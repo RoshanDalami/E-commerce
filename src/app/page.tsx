@@ -7,7 +7,8 @@ import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 import { db } from "./firebase/config";
 import { getDocs, collection } from "firebase/firestore";
-
+import CategoriesCard from "./Components/CategoriesCard";
+import Link from "next/link";
 
 export default function Home() {
   const [products, setProducts] = useState([{}]);
@@ -28,7 +29,14 @@ export default function Home() {
 
         <HomeSectionPage />
         </div>
-
+        <div>
+          <div className="mx-8 my-6">
+          <Link href={'/categories'}>
+          <h1 className="bg-black text-white font-bold text-2xl inline px-3 py-3 rounded-full ">Categories</h1>
+          </Link>
+          </div>
+        <CategoriesCard/>
+        </div>
         <div className="px-4 py-10 md:px-5 md:py-3">
           <span className="text-4xl font-bold px-2 md:px-10">Shop Here</span>
         </div>
