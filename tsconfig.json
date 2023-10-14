@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/store/UI-slice.js", "src/app/store/cart-slice.js", "src/app/store/Cartslice.ts", "src/app/store/provider.js", "src/app/Store/CartProvider.jsx", "src/app/[id]/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/store/UI-slice.js", "src/app/store/cart-slice.js", "src/app/store/Cartslice.ts", "src/app/store/provider.js", "src/app/Store/CartProvider.jsx", "src/app/[id]/page.tsx", "src/app/Components/TopMarquee.jsx"],
   "exclude": ["node_modules"]
 }

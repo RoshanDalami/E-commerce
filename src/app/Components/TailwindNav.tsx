@@ -28,6 +28,8 @@ import CartContext from "../Store/Cart-context";
 import avatar from "../../../public/assets/avatar.svg";
 import { UserAuth } from "../Context/AuthContext";
 import { useContext } from "react";
+
+import { BsSearchHeartFill } from "react-icons/bs";
 const navigation = {
   categories: [
     {
@@ -36,7 +38,7 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href: '/comingsoon',
+          href: "/comingsoon",
           imageSrc: image1,
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
@@ -54,8 +56,6 @@ const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            
-            
             { name: "Crop top", href: "/comingsoon" },
             { name: "t-shirt dress", href: "/comingsoon" },
             { name: "half sleeve tshirt", href: "/comingsoon" },
@@ -92,7 +92,7 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href:"/comingsoon" ,
+          href: "/comingsoon",
           imageSrc: image1,
           imageAlt:
             "Drawstring top with elastic loop closure and textured interior padding.",
@@ -111,12 +111,11 @@ const navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            
-            { name: "Rounded neck T-shirt", href:"/comingsoon"},
+            { name: "Rounded neck T-shirt", href: "/comingsoon" },
             { name: "collar T-shirt", href: "/comingsoon" },
             { name: "Oversized T-Shirts", href: "/tshirts" },
             { name: "Full sleeve T-shirt", href: "/comingsoon" },
-            { name: "Pullover hoodie", href:"/comingsoon" },
+            { name: "Pullover hoodie", href: "/comingsoon" },
             { name: "Zipper hoodie", href: "/comingsoon" },
             { name: "Zoggers", href: "/comingsoon" },
             { name: "Shorts", href: "/comingsoon" },
@@ -153,7 +152,7 @@ const navigation = {
       featured: [
         {
           name: "New Arrivals",
-          href:"/comingsoon" ,
+          href: "/comingsoon",
           imageSrc: image1,
           imageAlt:
             "Drawstring top with elastic loop closure and textured interior padding.",
@@ -171,11 +170,7 @@ const navigation = {
         {
           id: "clothing",
           name: "Clothing",
-          items: [
-            
-            { name: "Rounded neck T-shirt", href:"/comingsoon"},
-           
-          ],
+          items: [{ name: "Rounded neck T-shirt", href: "/comingsoon" }],
         },
         {
           id: "accessories",
@@ -374,6 +369,7 @@ export default function TailwindNav() {
                               height={30}
                               className="rounded-full"
                             />
+                            <div>{user?.displayName}</div>
                           </Link>
                         </>
                       ) : (
@@ -395,7 +391,11 @@ export default function TailwindNav() {
                         Sign in
                       </Link>
                     )}
-                    {user ? <span className="text-xl  p-2">{user?.displayName}</span> : ''}
+                    {user ? (
+                      <span className="text-xl  p-2">{user?.displayName}</span>
+                    ) : (
+                      ""
+                    )}
                   </div>
                   <div className="flow-root">
                     {!user ? (
@@ -588,17 +588,28 @@ export default function TailwindNav() {
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
+                <div className="border-2 border-gray-300 rounded-md  flex items-center  mx-3 ">
+                  <input
+                    type="text"
+                    className=" py-1 px-4 w-full rounded-md focus:outline-none "
+                    placeholder="Search within Weugly "
+                  />
+                  <BsSearchHeartFill className="text-2xl mx-3" />
+                </div>
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {user ? (
                     user.photoURL ? (
-                      <Link href={"/profile"}>
-                        <Image
+                      <Link href={"/profile"} className="flex items-center">
+                        {/* <Image
                           src={user?.photoURL}
                           alt=""
                           width={50}
                           height={50}
                           className="rounded-full"
-                        />
+                        /> */}
+                        <h1 className="text-xl font-semibold">
+                          Hi,{user?.displayName}
+                        </h1>
                       </Link>
                     ) : (
                       <Link href={"/profile"}>

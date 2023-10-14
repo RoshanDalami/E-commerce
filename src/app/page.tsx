@@ -9,6 +9,8 @@ import { db } from "./firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 import CategoriesCard from "./Components/CategoriesCard";
 import Link from "next/link";
+import MidBanner from "./Components/MidBanner";
+import TopMarquee from "./Components/TopMarquee";
 
 export default function Home() {
   const [products, setProducts] = useState([{}]);
@@ -25,10 +27,11 @@ export default function Home() {
   return (
     <>
       <main className=" overflow-hidden ">
+        <TopMarquee/>
         <div className=" ">
-
         <HomeSectionPage />
         </div>
+        <MidBanner/>
         <div>
           <div className="mx-8 my-6">
           <Link href={'/categories'}>
