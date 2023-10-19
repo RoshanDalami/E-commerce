@@ -5,6 +5,7 @@ import CartContext from "./Cart-context";
 const defaultCartState = {
   items: [],
   totalAmount: 0,
+  wishlist: [] 
 };
 
 // Reducer function for managing cart state and actions
@@ -34,6 +35,19 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
+  if (action.type === "WISHLIST") {
+    const existingWishlistItemIndex = state.wishlist.findIndex(
+      (item) => item.id === action.item.id
+    );
+    if (existingWishlistItemIndex === -1) {
+      return {
+        ...state,
+        wishlist: state.wishlist.concat(action.item)
+      };
+    }
+    return state;
+  }
+  
   if (action.type === "REMOVE") {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
@@ -57,6 +71,7 @@ const cartReducer = (state, action) => {
     return {
       items: [],
       totalAmount: 0,
+
     };
   }
   return defaultCartState;
@@ -80,6 +95,9 @@ const CartProvider = (props) => {
   const onOrderHandler = () => {
     dispatchCartAction({ type: "ORDER" });
   };
+  const addItemToWishlistHandler = (item) => {
+    dispatchCartAction({ type: "WISHLIST", item: item });
+  };
 
   const cartContext = {
     items: curState.items,
@@ -87,6 +105,7 @@ const CartProvider = (props) => {
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     order: onOrderHandler,
+    addToWish: addItemToWishlistHandler
   };
 
   return (

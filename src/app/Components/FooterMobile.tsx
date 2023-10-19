@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from '../../../public/logo.png'
-import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineHeart } from "react-icons/ai";
 import { BiCategoryAlt } from "react-icons/bi";
 import { FaFacebook,FaWhatsappSquare,FaInstagramSquare } from "react-icons/fa";
 import { BsRocketTakeoff, BsPerson } from "react-icons/bs";
@@ -114,8 +114,8 @@ export default function Footer() {
                 href={"/categories"}
                 className="flex flex-col items-center justify-center"
               >
-                <BsRocketTakeoff className="text-3xl" />
-                <span className="text-sm">Explore</span>
+                <AiOutlineHeart className="text-3xl" />
+                <span className="text-sm">Wishlist</span>
               </Link>
             </div>
             <div>
