@@ -9,6 +9,7 @@ import { db } from "./firebase/config";
 import { getDocs, collection } from "firebase/firestore";
 import CategoriesCard from "./Components/CategoriesCard";
 import Link from "next/link";
+import Image from "next/image";
 import MidBanner from "./Components/MidBanner";
 import TopMarquee from "./Components/TopMarquee";
 import HomeNewArrival from "./Components/HomeNewArrival";
@@ -76,6 +77,10 @@ export default function Home() {
             );
           })}
         </div>
+        <Link href={'https://wa.me/message/F2X4SSL5A4DRC1'} >
+        
+        <Image src={'/svgFiles/whatsapp.svg'} alt="" width={50} height={50} className="fixed right-3 bottom-20 md:hidden z-50   " />
+        </Link>
       </main>
     </>
   );
