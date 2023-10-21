@@ -61,24 +61,28 @@ export default function Home() {
           </div>
         </div>
         <div className="px-4 py-10 md:px-5 md:py-3">
-          <span className="text-4xl font-bold px-2 md:px-10">Shop Here</span>
+          <span className="text-4xl font-bold px-2 md:px-10">OverSized T-shirts</span>
         </div>
-        <div id="products">
+        <div className="flex items-center justify-center" >
           <CategoriesPage />
         </div>
 
+
         <div className="px-5 py-4 flex gap-6 flex-wrap items-center justify-center ">
-          {products?.map((item: any) => {
-            return (
-              <ProductCard
-                key={nanoid()}
-                image={item.imageulr}
-                price={item.price}
-                title={item.title}
-                description={item.description}
-                id={item.id}
-              />
-            );
+          {products?.map((item: any,index:number) => {
+            if(index%2 === 0){
+              return (
+                <ProductCard
+                  key={nanoid()}
+                  image={item.imageulr}
+                  price={item.price}
+                  title={item.title}
+                  description={item.description}
+                  id={item.id}
+                />
+              );
+            }
+            return null
           })}
         </div>
         <Link href={'https://wa.me/message/F2X4SSL5A4DRC1'} >

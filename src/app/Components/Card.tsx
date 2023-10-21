@@ -64,7 +64,7 @@ export default function ProductCard(props: any) {
             <div>
 
             <button
-              className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:scale-110 transition duration-300"
+              className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition duration-300"
               onClick={onSubmitHandler}
             >
               add to cart
@@ -72,7 +72,7 @@ export default function ProductCard(props: any) {
             </div>
           </div>
         </div>
-        <div className="flex gap-2 p-2 bg-white rounded-b-lg">
+        {/* <div className="flex gap-2 p-2 bg-white rounded-b-lg">
           <p>Select size</p>
           <select
             name=""
@@ -88,7 +88,7 @@ export default function ProductCard(props: any) {
             <option value="Extra large">XL</option>
             <option value="Extra Extra large">XXL</option>
           </select>
-        </div>
+        </div> */}
       </div>
     </>
   );
