@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import logo from '../../../public/logo.png'
+import logo from '../../../public/newLogo.png'
 import { AiOutlineHome, AiOutlineHeart } from "react-icons/ai";
 import { BiCategoryAlt } from "react-icons/bi";
 import { FaFacebook,FaWhatsappSquare,FaInstagramSquare } from "react-icons/fa";
@@ -132,7 +132,7 @@ export default function Footer() {
       </main>
       <main className="hidden md:flex bg-slate-100 h-[200px] mt-20 justify-between  px-20 py-5 ">
         <section>
-          <Image src={logo} alt="logo" width={150} height={150} />
+          <Image src={logo} alt="logo"  width={150} height={150} />
         </section>
         <section>
           <h1 className="text-xl font-bold">Products</h1>
@@ -147,7 +147,7 @@ export default function Footer() {
           </div>
         </section>
         <section>
-          <h1 className="text-xl font-bold" >About us</h1>
+          <h1 className="text-xl font-bold" >COMPANY</h1>
           <div>
             {Details.map((items) => {
               return (
@@ -171,7 +171,7 @@ export default function Footer() {
           </div>
         </section>
         <section className=" ">
-          <h1 className="text-xl font-bold">Socials</h1>
+          <h1 className="text-xl font-bold">CONNECT WITH US</h1>
           <div className="flex items-center justify-left gap-6" >
             {Socials.map((items) => {
               return (

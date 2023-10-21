@@ -13,6 +13,7 @@ import Image from "next/image";
 import MidBanner from "./Components/MidBanner";
 import TopMarquee from "./Components/TopMarquee";
 import HomeNewArrival from "./Components/HomeNewArrival";
+import Promo from "./Components/Promo";
 
 export default function Home() {
   const [products, setProducts] = useState([{}]);
@@ -33,8 +34,11 @@ export default function Home() {
         <div className=" ">
           <HomeSectionPage />
         </div>
-        <MidBanner />
-        <div>
+        {/* <MidBanner /> */}
+        <div className="my-10" >
+        <Promo/>
+        </div>
+        {/* <div>
           <div className="mx-8 my-6">
             <Link href={"/categories"}>
               <h1 className="bg-black text-white font-bold text-2xl inline px-3 py-3 rounded-full ">
@@ -43,7 +47,7 @@ export default function Home() {
             </Link>
           </div>
           <CategoriesCard />
-        </div>
+        </div> */}
         <div>
           <div className="md:mx-8 mx-4 md:my-6 my-4">
             <Link href={"/categories"}>

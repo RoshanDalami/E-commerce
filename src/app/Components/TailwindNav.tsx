@@ -22,7 +22,7 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import logo from "../../../public/logo.png";
+import logo from "../../../public/newLogo.png";
 import image1 from "../../../public/reduced/hero_image_1.jpg";
 import CartContext from "../Store/Cart-context";
 import avatar from "../../../public/assets/avatar.svg";
@@ -456,7 +456,7 @@ export default function TailwindNav() {
                 <Link href="/">
                   <span className="sr-only">Your Company</span>
                   <Image
-                    className="h-8 w-auto"
+                    className=" w-auto"
                     src={logo}
                     alt=""
                     height={100}

@@ -64,7 +64,7 @@ export default function ProductCard(props: any) {
             <div>
 
             <button
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300"
+              className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:scale-110 transition duration-300"
               onClick={onSubmitHandler}
             >
               add to cart

@@ -60,6 +60,7 @@ export default function Profile() {
       {
         <>
           <div className="flex items-center justify-center flex-col">
+            
           {user.photoURL ? (
                       <Image
                         src={user?.photoURL}
