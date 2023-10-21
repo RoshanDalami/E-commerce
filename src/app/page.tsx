@@ -11,6 +11,7 @@ import CategoriesCard from "./Components/CategoriesCard";
 import Link from "next/link";
 import MidBanner from "./Components/MidBanner";
 import TopMarquee from "./Components/TopMarquee";
+import HomeNewArrival from "./Components/HomeNewArrival";
 
 export default function Home() {
   const [products, setProducts] = useState([{}]);
@@ -27,18 +28,32 @@ export default function Home() {
   return (
     <>
       <main className=" overflow-hidden ">
-        <TopMarquee/>
+        <TopMarquee />
         <div className=" ">
-        <HomeSectionPage />
+          <HomeSectionPage />
         </div>
-        <MidBanner/>
+        <MidBanner />
         <div>
           <div className="mx-8 my-6">
-          <Link href={'/categories'}>
-          <h1 className="bg-black text-white font-bold text-2xl inline px-3 py-3 rounded-full ">Categories</h1>
-          </Link>
+            <Link href={"/categories"}>
+              <h1 className="bg-black text-white font-bold text-2xl inline px-3 py-3 rounded-full ">
+                Categories
+              </h1>
+            </Link>
           </div>
-        <CategoriesCard/>
+          <CategoriesCard />
+        </div>
+        <div>
+          <div className="md:mx-8 mx-4 md:my-6 my-4">
+            <Link href={"/categories"}>
+              <h1 className="bg-black text-white font-bold md:text-2xl inline px-3 py-3 rounded-full ">
+                New Arrivals
+              </h1>
+            </Link>
+          </div>
+          <div className="md:my-10 md:px-10 md:mx-10  ">
+            <HomeNewArrival />
+          </div>
         </div>
         <div className="px-4 py-10 md:px-5 md:py-3">
           <span className="text-4xl font-bold px-2 md:px-10">Shop Here</span>

@@ -30,6 +30,7 @@ import { UserAuth } from "../Context/AuthContext";
 import { useContext } from "react";
 
 import { BsSearchHeartFill } from "react-icons/bs";
+import {AiOutlineHeart} from 'react-icons/ai'
 const navigation = {
   categories: [
     {
@@ -212,8 +213,11 @@ export default function TailwindNav() {
   const { user }: any = UserAuth();
   const cartCtx = useContext(CartContext);
   const [cartItemNumber, setCartItemNumber] = useState([]);
-  const { items } = cartCtx;
+  const { items,wishlist } = cartCtx;
   const numberOfCartItems = items.reduce((curNumber, item: any) => {
+    return curNumber + item.amount;
+  }, 0);
+  const numberOfWishlistItems = wishlist?.reduce((curNumber, item: any) => {
     return curNumber + item.amount;
   }, 0);
 
@@ -680,6 +684,22 @@ export default function TailwindNav() {
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                       {numberOfCartItems}
+                    </span>
+                    <span className="sr-only">items in cart, view bag</span>
+                  </Link>
+                </div>
+                {/* wishlist  */}
+                <div className="ml-4 flow-root lg:ml-6">
+                  <Link
+                    href="/wishlist"
+                    className="group -m-2 flex items-center p-2"
+                  >
+                    <AiOutlineHeart
+                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                      {numberOfWishlistItems}
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </Link>

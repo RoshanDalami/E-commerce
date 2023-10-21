@@ -35,19 +35,8 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
-  if (action.type === "WISHLIST") {
-    const existingWishlistItemIndex = state.wishlist.findIndex(
-      (item) => item.id === action.item.id
-    );
-    if (existingWishlistItemIndex === -1) {
-      return {
-        ...state,
-        wishlist: state.wishlist.concat(action.item)
-      };
-    }
-    return state;
-  }
   
+
   if (action.type === "REMOVE") {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id
@@ -96,16 +85,19 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "ORDER" });
   };
   const addItemToWishlistHandler = (item) => {
-    dispatchCartAction({ type: "WISHLIST", item: item });
+    dispatchCartAction({ type: "WISHLIST_ADD", item: item });
+  };
+  const removeItemFromWishlistHandler = (id) => {
+    dispatchCartAction({ type: "WISHLIST_REMOVE", item: id });
   };
 
   const cartContext = {
     items: curState.items,
+    wishlist:curState.wishlist,
     totalAmount: curState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     order: onOrderHandler,
-    addToWish: addItemToWishlistHandler
   };
 
   return (

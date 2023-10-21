@@ -27,36 +27,7 @@ export default function ProductCard(props: any) {
       size: size,
     });
   };
-  const addToWishlistHandler = (amount:any) => {
-    cartCtx.addToWish({
-      id: props.id,
-      title: props.title,
-      price: props.price,
-      amount: amount,
-      image: props.image,
-      size: size,
-    })
-  };
-  const onWishHandler = (event:any)=>{
-    event.preventDefault();
-    const enteredAmount = 1;
-    if (enteredAmount < 1) {
-      return;
-    }
-    if (!user) {
-      router.replace("/profile");
-      return;
-    }
-    try {
-      addToWishlistHandler(enteredAmount);
-    
-      toast.success("Item has been added to wishlist");
-    } catch (error) {
-      console.log(error)
-      console.log("error");
-    }
-  }
-
+ 
   const onSubmitHandler = (event: any) => {
     event.preventDefault();
     const enteredAmount = 1;
@@ -98,12 +69,6 @@ export default function ProductCard(props: any) {
             >
               add to cart
             </button>
-            {/* <button
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300"
-              onClick={onWishHandler}
-            >
-              Add to wishlist
-            </button> */}
             </div>
           </div>
         </div>
