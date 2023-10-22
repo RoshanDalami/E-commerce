@@ -27,7 +27,7 @@ function SampleNextArrow(props) {
 
 export default function SliderSingle({children}){
     const settings = {
-        dots: true,
+        dots: false,
         autoplay: true,
       autoplaySpeed: 3000,
         infinite: true,

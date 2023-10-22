@@ -47,7 +47,7 @@ export default function ProductCard(props: any) {
   };
   return (
     <>
-      <div className="w-[350px] shadow-lg  ">
+      <div className="w-[350px]  ">
         <Link href={`/${props.id}`}>
           <div className="group rounded-t-lg w-[350px] overflow-hidden">
             <div className="w-[350px] h-[400px] group-hover:scale-125 transition duration-300">
@@ -56,7 +56,7 @@ export default function ProductCard(props: any) {
             <div className="  shadow border-2 border-gray-400 flex flex-col overflow-hidden"></div>
           </div>
         </Link>
-        <div className="bg-white px-4 py-2  ">
+        <div className="bg-gray-200 px-4 py-2 rounded-b-lg shadow-md ">
           <h1 className="text-xl font-bold">{props.title}</h1>
           <p className=" opacity-50">{props.description}</p>
           <div className="flex justify-between items-center">
@@ -64,7 +64,7 @@ export default function ProductCard(props: any) {
             <div>
 
             <button
-              className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition duration-300"
+              className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition duration-300  "
               onClick={onSubmitHandler}
             >
               add to cart

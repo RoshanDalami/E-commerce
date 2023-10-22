@@ -35,7 +35,7 @@ export default function Home() {
           <HomeSectionPage />
         </div>
         {/* <MidBanner /> */}
-        <div className="my-10" >
+        <div className="md:my-10 " >
         <Promo/>
         </div>
         {/* <div>
@@ -48,7 +48,7 @@ export default function Home() {
           </div>
           <CategoriesCard />
         </div> */}
-        <div>
+        <div className="my-10">
           <div className="md:mx-8 mx-4 md:my-6 my-4">
             <Link href={"/categories"}>
               <h1 className="bg-black text-white font-bold md:text-2xl inline px-3 py-3 rounded-full ">
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
         <Link href={'https://wa.me/message/F2X4SSL5A4DRC1'} >
         
-        <Image src={'/svgFiles/whatsapp.svg'} alt="" width={50} height={50} className="fixed right-3 bottom-20 md:hidden z-50   " />
+        <Image src={'/svgFiles/whatsappNew.svg'} alt="" width={50} height={50} className="fixed right-3 bottom-20 md:hidden z-50   " />
         </Link>
       </main>
     </>

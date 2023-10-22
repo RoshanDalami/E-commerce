@@ -75,12 +75,15 @@ export default function IndividualProduct() {
   console.log(individualProduct);
   return (
     <>
+    <div className="  " >
+
       <BiArrowBack
-        className="text-3xl mt-10 ml-10 cursor-pointer"
+        className="text-5xl mt-10 ml-10 cursor-pointer bg-gray-600/20  p-3 rounded-full  "
         onClick={onBackHandler}
       />
-      <main className="md:mx-20 flex  items-center justify-center h-[90vh]">
-        <div className="flex flex-col md:flex-row    gap-6   bg-white shadow-sm md:shadow-2xl  md:w-[900px]   rounded-lg p-10">
+    </div>
+      <main className="md:mx-20 flex  items-center justify-center ">
+        <div className="flex flex-col md:flex-row    gap-6   bg-slate-200 shadow-sm md:shadow-2xl  md:w-[900px]   rounded-lg p-10">
           <div className="w-[300px]  ">
             <SliderSingle>
                 <Image
@@ -143,7 +146,7 @@ export default function IndividualProduct() {
                 </select>
               </div>
               <button
-                className="md:px-6 px-3 py-1 bg-blue-600 text-white rounded-xl hover:scale-110 transition duration-300 text-sm"
+                className="md:px-6 px-3 py-1 bg-indigo-600 text-white rounded-xl hover:bgindigo-700 transition duration-300 text-sm"
                 onClick={onSubmitHandler}
               >
                 add to cart
