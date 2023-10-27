@@ -121,6 +121,7 @@ const Cart = (props: any) => {
             price={item.price}
             amount={item.amount}
             image={item.image}
+            size={item.size.fullname}
             onRemove={cartItemRemoveHandler.bind(null, item.id)}
             onAdd={cartItemAddHandler.bind(null, item)}
           />

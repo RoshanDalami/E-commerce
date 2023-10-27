@@ -1,11 +1,10 @@
 import React, { useReducer } from "react";
-import CartContext from "./Cart-context";
+import WishContext from "./Wish-context";
 
 // Default state of the cart
 const defaultCartState = {
   items: [],
   totalAmount: 0,
-  wishlists: [] 
 };
 
 // Reducer function for managing cart state and actions
@@ -13,7 +12,6 @@ const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount; //to update price
-
 
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
@@ -66,7 +64,7 @@ const cartReducer = (state, action) => {
   return defaultCartState;
 };
 
-const CartProvider = (props) => {
+const WishProvider = (props) => {
   // Initialize the cart state with the default state
   const [curState, dispatchCartAction] = useReducer(
     cartReducer,
@@ -84,26 +82,22 @@ const CartProvider = (props) => {
   const onOrderHandler = () => {
     dispatchCartAction({ type: "ORDER" });
   };
-  const onAddItemToWishlistHandler = (item) =>{
-    dispatchCartAction({type:'WISHLIST' , item:item })
-  }
  
 
-  const cartContext = {
-    items: curState.items,
-    wishlist:curState.wishlist,
+  const wishContext = {
+    wishItems: curState.items,
     totalAmount: curState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     order: onOrderHandler,
-    addToWish:onAddItemToWishlistHandler,
+    
   };
 
   return (
-    <CartContext.Provider value={cartContext}>
+    <WishContext.Provider value={wishContext}>
       {props.children}
-    </CartContext.Provider>
+    </WishContext.Provider>
   );
 };
 
-export default CartProvider;
+export default WishProvider;

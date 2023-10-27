@@ -7,6 +7,7 @@ import SliderSingle from "./SingleCarousel";
 import Image from "next/image";
 import { BiArrowBack } from "react-icons/bi";
 import CartContext from "../Store/Cart-context";
+import WishContext from "../Store/Wish-context";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { UserAuth } from "../Context/AuthContext";
@@ -17,14 +18,14 @@ import { StarIcon } from "@heroicons/react/20/solid";
 
 const product = {
   sizes: [
-    { name: "XXS", inStock: true },
-    { name: "XS", inStock: true },
-    { name: "S", inStock: true },
-    { name: "M", inStock: true },
-    { name: "L", inStock: true },
-    { name: "XL", inStock: true },
-    { name: "XXL", inStock: true },
-    { name: "XXXL", inStock: false },
+    { name: "XXS", inStock: true, fullname: "Extra Extra Small" },
+    { name: "XS", inStock: true, fullname: " Extra Small" },
+    { name: "S", inStock: true, fullname: " Small" },
+    { name: "M", inStock: true, fullname: "Medium" },
+    { name: "L", inStock: true, fullname: "Large" },
+    { name: "XL", inStock: true, fullname: " Extra Large" },
+    { name: "XXL", inStock: true, fullname: "Extra Extra Large" },
+    { name: "XXXL", inStock: false, fullname: "Trible Extra Large" },
   ],
 };
 function classNames(...classes) {
@@ -35,17 +36,10 @@ export default function IndividualProduct() {
   const { id } = useParams();
   const { user } = UserAuth();
   const cartCtx = useContext(CartContext);
+  const wishCtx = useContext(WishContext);
   const router = useRouter();
   const [size, setSize] = useState("small");
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
-  console.log(selectedSize);
 
   const [individualProduct, setIndividualProduct] = useState({
     imageulr: "",
@@ -54,6 +48,35 @@ export default function IndividualProduct() {
     description: "",
     id: "",
   });
+
+  const addToWishHandler = (amount) => {
+    wishCtx.addItem({
+      id: id,
+      title: individualProduct?.title,
+      price: individualProduct?.price,
+      amount: amount,
+      image: individualProduct?.imageulr,
+      size: selectedSize,
+    });
+  };
+  const onWishHandler = (event) => {
+    event.preventDefault();
+    const enteredAmount = 1;
+    if (enteredAmount < 1) {
+      return;
+    }
+    if (!user) {
+      router.replace("/profile");
+      return;
+    }
+    try {
+      addToWishHandler(enteredAmount);
+      console.log(wishCtx.wishItems);
+      toast.success("Item has been added to wishlist");
+    } catch (error) {
+      console.log("error");
+    }
+  };
 
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
@@ -65,6 +88,7 @@ export default function IndividualProduct() {
       size: selectedSize,
     });
   };
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
     const enteredAmount = 1;
@@ -77,6 +101,7 @@ export default function IndividualProduct() {
     }
     try {
       addToCartHandler(enteredAmount);
+      console.log(cartCtx.items);
       toast.success("Item has been added to cart");
     } catch (error) {
       console.log("error");
@@ -95,7 +120,6 @@ export default function IndividualProduct() {
   const onBackHandler = () => {
     router.push("/");
   };
-  console.log(individualProduct);
   return (
     <>
       <div className="  ">
@@ -249,6 +273,12 @@ export default function IndividualProduct() {
                 onClick={onSubmitHandler}
               >
                 add to cart
+              </button>
+              <button
+                className="md:px-6 px-3 py-3 bg-rose-600 text-white rounded-xl hover:bgindigo-700 transition duration-300 text-sm"
+                onClick={onWishHandler}
+              >
+                add to wishlist
               </button>
             </div>
           </div>

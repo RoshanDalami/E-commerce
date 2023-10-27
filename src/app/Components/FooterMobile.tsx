@@ -111,7 +111,7 @@ export default function Footer() {
             </div>
             <div>
               <Link
-                href={"/categories"}
+                href={"/wishlist"}
                 className="flex flex-col items-center justify-center"
               >
                 <AiOutlineHeart className="text-3xl" />

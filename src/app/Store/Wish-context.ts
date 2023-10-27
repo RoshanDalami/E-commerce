@@ -1,14 +1,13 @@
 'use client'
 import React from "react";
 
-const CartContext = React.createContext({
-    items:[],
+const WishContext = React.createContext({
+    wishItems:[],
     totalAmount: 0 ,
     addItem : (item:any)=>{},
     removeItem : (id:any)=>{},
-    order : ()=>void{},
 });
 
 
 
-export default CartContext
+export default WishContext

@@ -26,6 +26,7 @@ import {
 import logo from "../../../public/newLogo.png";
 import image1 from "../../../public/reduced/hero_image_1.jpg";
 import CartContext from "../Store/Cart-context";
+import WishContext from "../Store/Wish-context";
 import avatar from "../../../public/assets/avatar.svg";
 import { UserAuth } from "../Context/AuthContext";
 import { useContext } from "react";
@@ -216,11 +217,13 @@ export default function TailwindNav() {
   const router = useRouter();
   const cartCtx = useContext(CartContext);
   const [cartItemNumber, setCartItemNumber] = useState([]);
-  const { items, wishlist } = cartCtx;
-  const numberOfCartItems = items.reduce((curNumber, item: any) => {
+  const { items } = cartCtx;
+  const wishCtx = useContext(WishContext)
+  const {wishItems} = wishCtx;
+  const numberOfCartItems =  items.reduce((curNumber, item: any) => {
     return curNumber + item.amount;
-  }, 0);
-  const numberOfWishlistItems = wishlist?.reduce((curNumber, item: any) => {
+  }, 0) ;
+  const numberOfWishlistItems = wishItems?.reduce((curNumber, item: any) => {
     return curNumber + item.amount;
   }, 0);
   const onSignoutHandler = () => {
