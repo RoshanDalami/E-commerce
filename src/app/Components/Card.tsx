@@ -62,13 +62,14 @@ export default function ProductCard(props: any) {
           <div className="flex justify-between items-center">
             <p>Rs. {props.price}</p>
             <div>
-
+            <Link href={`/${props.id}`}>
             <button
               className="px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition duration-300  "
-              onClick={onSubmitHandler}
+              // onClick={onSubmitHandler}
             >
-              add to cart
+              view product
             </button>
+            </Link>
             </div>
           </div>
         </div>

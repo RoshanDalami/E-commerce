@@ -62,7 +62,7 @@ export default function IndividualProduct() {
       price: individualProduct?.price,
       amount: amount,
       image: individualProduct?.imageulr,
-      size: size,
+      size: selectedSize,
     });
   };
   const onSubmitHandler = (event) => {

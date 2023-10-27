@@ -13,6 +13,7 @@
   ```
 */
 import Image from "next/image";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
@@ -28,9 +29,10 @@ import CartContext from "../Store/Cart-context";
 import avatar from "../../../public/assets/avatar.svg";
 import { UserAuth } from "../Context/AuthContext";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 
 import { BsSearchHeartFill } from "react-icons/bs";
-import {AiOutlineHeart} from 'react-icons/ai'
+import { AiOutlineHeart } from "react-icons/ai";
 const navigation = {
   categories: [
     {
@@ -210,16 +212,22 @@ function classNames(...classes: any) {
 
 export default function TailwindNav() {
   const [open, setOpen] = useState(false);
-  const { user }: any = UserAuth();
+  const { user, signout }: any = UserAuth();
+  const router = useRouter();
   const cartCtx = useContext(CartContext);
   const [cartItemNumber, setCartItemNumber] = useState([]);
-  const { items,wishlist } = cartCtx;
+  const { items, wishlist } = cartCtx;
   const numberOfCartItems = items.reduce((curNumber, item: any) => {
     return curNumber + item.amount;
   }, 0);
   const numberOfWishlistItems = wishlist?.reduce((curNumber, item: any) => {
     return curNumber + item.amount;
   }, 0);
+  const onSignoutHandler = () => {
+    signout();
+    toast.success("logout success");
+    router.replace("/");
+  };
 
   return (
     <div className="bg-white z-50 sticky top-0 ">
@@ -361,7 +369,7 @@ export default function TailwindNav() {
                 </div> */}
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
+                  <div className=" flex items-center gap-3">
                     {user ? (
                       user.photoURL ? (
                         <>
@@ -369,11 +377,10 @@ export default function TailwindNav() {
                             <Image
                               src={user?.photoURL}
                               alt=""
-                              width={30}
-                              height={30}
+                              width={50}
+                              height={50}
                               className="rounded-full"
                             />
-                            <div>{user?.displayName}</div>
                           </Link>
                         </>
                       ) : (
@@ -396,11 +403,23 @@ export default function TailwindNav() {
                       </Link>
                     )}
                     {user ? (
-                      <span className="text-xl  p-2">{user?.displayName}</span>
+                      <span className="text-2xl font-bold  p-2">
+                        {user?.displayName}
+                      </span>
                     ) : (
                       ""
                     )}
+
                   </div>
+                  {
+                    user ? 
+                    <button
+                      className="bg-blue-600 text-xl px-4 py-2 rounded-lg w-full text-white"
+                      onClick={onSignoutHandler}
+                    >
+                      Sign out{" "}
+                    </button> : ''
+                  }
                   <div className="flow-root">
                     {!user ? (
                       <Link

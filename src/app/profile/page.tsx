@@ -6,10 +6,12 @@ import { UserAuth } from "../Context/AuthContext";
 import toast from "react-hot-toast";
 import SigninForm from "../Components/SigninForm";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
+import { useState ,useEffect } from "react";
 import logo from "../../../public/logo.png";
 import avatar from "../../../public/assets/avatar.svg";
 import login from "../../../public/svgFiles/login.svg";
+import { db } from "../firebase/config";
+import { collection, doc,getDocs } from "firebase/firestore";
 
 export default function NewProfile() {
   const { user, googleSignIn, signout }: any = UserAuth();
@@ -19,6 +21,7 @@ export default function NewProfile() {
     email: "",
     password: "",
   });
+  const [address,setAddress] = useState([{}]);
   const onSinginHandler = async () => {
     await googleSignIn();
     toast.success("Login Success");
@@ -26,6 +29,18 @@ export default function NewProfile() {
   const onMoodChange = () => {
     setMood((prevState) => !prevState);
   };
+  const getAddress = async()=>{
+    const dbRef = collection(db,'address');
+    const response = await getDocs(dbRef);
+    const data = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    setAddress(data)
+
+  }
+  useEffect(()=>{
+    getAddress();
+  },[])
+  console.log(address)
+  console.log(user?.uid)
   if (!user) {
     return (
       <>
@@ -53,8 +68,9 @@ export default function NewProfile() {
     toast.success("logout success");
     router.replace("/");
   };
+
   return (
-    <div className="md:mx-20 my-10 min-h-screen ">
+    <div className="md:mx-20 my-10 h-[90vh] ">
       <div className="px-4 sm:px-0">
         <h3 className=" font-semibold leading-7 md:text-3xl  text-gray-900 text-2xl ">
           Welcome Back
@@ -91,6 +107,12 @@ export default function NewProfile() {
       >
         Sign out
       </button>
+            {/* <button
+        className="bg-blue-600 text-xl px-4 py-2 rounded-lg text-white"
+        onClick={getAddress}
+      >
+        Get Address
+      </button> */}
             </div>
         </div>
       </div>
@@ -123,16 +145,51 @@ export default function NewProfile() {
               {user?.email}
             </dd>
           </div>
+          {/* address  */}
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt className="text-sm font-medium leading-6 text-gray-900">
+              Address
+            </dt>
+            
+              {/* {user?.email} */}
+              {
+                address?.map((item:any)=>{
+                  if(item?.uid === user.uid){
+                    return(
+                      <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" key={item.uid} > 
+                        {item.details.address1}
+                        <br />
+                        {item.details.city}
+                        <br />
+                        {item.details.state}
+                        <br />
+                        {item.details.postal}
+                        </dd>
+                    )
+                  }
+                })
+              }
+            
+          </div>
 
           {/* salary Section  */}
-          {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">
-              Salary expectation
+              Contact
             </dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              $120,000
-            </dd>
-          </div> */}
+            {
+                address?.map((item:any)=>{
+                  if(item?.uid === user.uid){
+                    return(
+                      <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" key={item.uid} > 
+                        {item.details.phone}
+                        
+                        </dd>
+                    )
+                  }
+                })
+              }
+          </div>
 
           {/* about section  */}
           {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

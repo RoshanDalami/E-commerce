@@ -84,12 +84,7 @@ const CartProvider = (props) => {
   const onOrderHandler = () => {
     dispatchCartAction({ type: "ORDER" });
   };
-  const addItemToWishlistHandler = (item) => {
-    dispatchCartAction({ type: "WISHLIST_ADD", item: item });
-  };
-  const removeItemFromWishlistHandler = (id) => {
-    dispatchCartAction({ type: "WISHLIST_REMOVE", item: id });
-  };
+ 
 
   const cartContext = {
     items: curState.items,

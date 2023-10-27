@@ -3,7 +3,7 @@ import { FormEvent, useState } from "react";
 import { auth } from "@/app/firebase/config";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword,updateProfile , sendEmailVerification } from "firebase/auth";
 import Image from "next/image";
 import signupsvg from '../../../public/svgFiles/signup.svg'
 
@@ -21,6 +21,7 @@ export default function SignupForm() {
   .then(async(userCredential) => {
     // Signed in 
     const user = userCredential.user;
+
    await updateProfile(user,{displayName:userDetails.username})
     console.log(user)
     setUserDetails({
