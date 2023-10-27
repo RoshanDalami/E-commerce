@@ -71,9 +71,9 @@ const cartReducer = (state, action) => {
 
 const CartProvider = (props) => {
 
-  const initialCartState = localStorage.getItem(CART_LOCAL_STORAGE_KEY)
+  const initialCartState = ( typeof localStorage !== 'undefined' && localStorage.getItem(CART_LOCAL_STORAGE_KEY)
     ? JSON.parse(localStorage.getItem(CART_LOCAL_STORAGE_KEY))
-    : defaultCartState;
+    : defaultCartState);
   
   // Initialize the cart state with the default state
   const [curState, dispatchCartAction] = useReducer(cartReducer, initialCartState);

@@ -66,8 +66,8 @@ const cartReducer = (state, action) => {
 };
 
 const WishProvider = (props) => {
-
-  const initialCartState = localStorage.getItem(WISH_LOCAL_STORAGE_KEY)
+  const initialCartState = 
+    (typeof localStorage !== 'undefined' && localStorage.getItem(WISH_LOCAL_STORAGE_KEY))
     ? JSON.parse(localStorage.getItem(WISH_LOCAL_STORAGE_KEY))
     : defaultCartState;
   // Initialize the cart state with the default state
