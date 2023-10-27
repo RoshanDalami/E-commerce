@@ -1,4 +1,6 @@
-import React, { useReducer } from "react";
+'use client'
+
+import React, { useReducer,useEffect } from "react";
 import CartContext from "./Cart-context";
 
 // Default state of the cart
@@ -7,6 +9,7 @@ const defaultCartState = {
   totalAmount: 0,
   wishlists: [] 
 };
+const CART_LOCAL_STORAGE_KEY = "cart";
 
 // Reducer function for managing cart state and actions
 const cartReducer = (state, action) => {
@@ -67,11 +70,16 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
+
+  const initialCartState = localStorage.getItem(CART_LOCAL_STORAGE_KEY)
+    ? JSON.parse(localStorage.getItem(CART_LOCAL_STORAGE_KEY))
+    : defaultCartState;
+  
   // Initialize the cart state with the default state
-  const [curState, dispatchCartAction] = useReducer(
-    cartReducer,
-    defaultCartState
-  );
+  const [curState, dispatchCartAction] = useReducer(cartReducer, initialCartState);
+  useEffect(() => {
+    localStorage.setItem(CART_LOCAL_STORAGE_KEY, JSON.stringify(curState));
+  }, [curState]);
 
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });
@@ -96,7 +104,6 @@ const CartProvider = (props) => {
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
     order: onOrderHandler,
-    addToWish:onAddItemToWishlistHandler,
   };
 
   return (

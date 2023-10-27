@@ -15,16 +15,13 @@ import ProductsItems from "../Components/ProductsItems";
 
 const Wish = (props: any) => {
   const wishCtx = useContext(WishContext);
-  const [address, setAddress]: any = useState({});
+
   const { user }: any = UserAuth();
   const router = useRouter();
-  const totalAmount = `${wishCtx.totalAmount.toFixed(2)}`;
+
   const hasItems = wishCtx.wishItems.length > 0;
-  const [userCouponCode, setUserCouponCode] = useState("");
-  const [systemCoupon, setSystemCoupon] = useState([{}]);
-  const [discountPercentage, setDiscountPercentage] = useState(0);
-  const [couponError, setCouponError] = useState("");
-  const [amountAfterDiscount,setAmountAfterDiscount] = useState(0);
+
+
 
   const cartItemRemoveHandler = (id: string) => {
     wishCtx.removeItem(id);
@@ -34,90 +31,14 @@ const Wish = (props: any) => {
     wishCtx.addItem({ ...item, amount: 1 });
     toast.success("Item has been added from cart");
   };
-  const goToProducts = () => {
-    router.push("/");
-  };
-
-  const getAddress = useCallback(async () => {
-    const dbRef = collection(db, "address");
-    try {
-      const response = await getDocs(dbRef);
-      const data = response.docs.map((doc) => ({ ...doc.data() }));
-      for (let i = 0; i <= data.length; i++) {
-        // Use < instead of <= here
-        if (data[i]?.uid === user?.uid) {
-          setAddress(data[i]?.details);
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching address data:", error);
-    }
-  }, [user?.uid]);
-  useEffect(() => {
-    getAddress();
-  }, [getAddress]);
-  const onOrder = async () => {
-    const items = wishCtx.wishItems;
-    let totalAmount = wishCtx.totalAmount;
-    const payload = user?.uid;
-    if (Object.keys(address).length === 0) {
-      router.replace("/address");
-      return;
-    }
-    if(discountPercentage>0){
-      totalAmount = amountAfterDiscount
-    }
-    try {
-      const dbRef = collection(db, "orders");
-      await addDoc(dbRef, { items, totalAmount, uid: payload, address });
-      console.log("order complete");
-      console.log(items);
-      
-      router.push("/orderplaced");
-    } catch (error) {
-      console.log("error" + error);
-    }
-  };
-  const coupons = async () => {
-    try {
-      const dbRef = collection(db, "coupon");
-      const response = await getDocs(dbRef);
-      const data = response.docs.map((doc) => ({ ...doc.data() }));
-      setSystemCoupon(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    coupons();
-  }, []);
-  const onApplyCoupon = () => {
-    systemCoupon.forEach((element:any) => {
-      if (element?.code === userCouponCode) {
-        console.log(element?.code);
-        setDiscountPercentage(Number(element?.discount));
-        const discountedAmount = (discountPercentage / 100) * +totalAmount;
-        const totalAmountAfterDiscount = +totalAmount - discountedAmount;
-        console.log(totalAmountAfterDiscount);
-        setAmountAfterDiscount(totalAmountAfterDiscount)
-        setCouponError('')
-      } else {
-        console.log("not matched");
-        setCouponError('Invalid coupon')
-      }
-    });
-    // console.log(systemCoupon)
-    console.log(userCouponCode);
-    
-  };
-  console.log(typeof discountPercentage);
-
   const cartItems = (
     <ul style={{ color: "white" }}>
       {wishCtx.wishItems.map((item: any) => {
+        console.log(item.id)
         return (
           <CartItem
             key={item.id}
+            id={item.id}
             title={item.title}
             price={item.price}
             amount={item.amount}
@@ -130,7 +51,7 @@ const Wish = (props: any) => {
       })}
     </ul>
   );
-  console.log(systemCoupon, "system coupon");
+
 
   return (
     <main className="min-h-screen">
@@ -138,7 +59,7 @@ const Wish = (props: any) => {
         <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
           <div className="flex items-center flex-col">
             {hasItems ? (
-              <h1 className="text-black font-bold text-3xl">Cart Items</h1>
+              <h1 className="text-black font-bold text-3xl">Wishlist</h1>
             ) : (
               ""
             )}

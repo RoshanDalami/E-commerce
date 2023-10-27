@@ -1,4 +1,5 @@
-import React, { useReducer } from "react";
+'use client'
+import React, { useReducer,useEffect } from "react";
 import WishContext from "./Wish-context";
 
 // Default state of the cart
@@ -6,7 +7,7 @@ const defaultCartState = {
   items: [],
   totalAmount: 0,
 };
-
+const WISH_LOCAL_STORAGE_KEY = "wish";
 // Reducer function for managing cart state and actions
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
@@ -65,12 +66,15 @@ const cartReducer = (state, action) => {
 };
 
 const WishProvider = (props) => {
-  // Initialize the cart state with the default state
-  const [curState, dispatchCartAction] = useReducer(
-    cartReducer,
-    defaultCartState
-  );
 
+  const initialCartState = localStorage.getItem(WISH_LOCAL_STORAGE_KEY)
+    ? JSON.parse(localStorage.getItem(WISH_LOCAL_STORAGE_KEY))
+    : defaultCartState;
+  // Initialize the cart state with the default state
+  const [curState, dispatchCartAction] = useReducer(cartReducer, initialCartState);
+  useEffect(() => {
+    localStorage.setItem(WISH_LOCAL_STORAGE_KEY, JSON.stringify(curState));
+  }, [curState]);
   const addItemToCartHandler = (item) => {
     dispatchCartAction({ type: "ADD", item: item });
   };

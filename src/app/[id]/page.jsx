@@ -47,6 +47,7 @@ export default function IndividualProduct() {
     title: "",
     description: "",
     id: "",
+    pid:"",
   });
 
   const addToWishHandler = (amount) => {
@@ -61,6 +62,7 @@ export default function IndividualProduct() {
   };
   const onWishHandler = (event) => {
     event.preventDefault();
+
     const enteredAmount = 1;
     if (enteredAmount < 1) {
       return;
