@@ -218,10 +218,17 @@ const Cart = (props: any) => {
         <h1 className="text-2xl ">Continue shopping with us</h1>
         <ProductsItems />
       </div>
-      <div className="  md:hidden my-10">
+      <div className="  md:hidden my-5">
         <div className="border-b-2 border-t-2 border-gray-500 mx-6 py-5">
           <Link href={"/"} className="text-2xl">
             continue shopping {"->"}
+          </Link>
+        </div>
+      </div>
+      <div className="  md:hidden my-5">
+        <div className="border-b-2 border-t-2 border-gray-500 mx-6 py-5">
+          <Link href={"/order"} className="text-2xl">
+            Your Order {"->"}
           </Link>
         </div>
       </div>
