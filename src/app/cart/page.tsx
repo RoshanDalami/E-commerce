@@ -23,7 +23,7 @@ const Cart = (props: any) => {
   const [systemCoupon, setSystemCoupon] = useState([{}]);
   const [discountPercentage, setDiscountPercentage] = useState(0);
   const [couponError, setCouponError] = useState("");
-  const [amountAfterDiscount,setAmountAfterDiscount] = useState(0);
+  const [amountAfterDiscount, setAmountAfterDiscount] = useState(0);
 
   const cartItemRemoveHandler = (id: string) => {
     cartCtx.removeItem(id);
@@ -63,8 +63,8 @@ const Cart = (props: any) => {
       router.replace("/address");
       return;
     }
-    if(discountPercentage>0){
-      totalAmount = amountAfterDiscount
+    if (discountPercentage > 0) {
+      totalAmount = amountAfterDiscount;
     }
     try {
       const dbRef = collection(db, "orders");
@@ -91,25 +91,23 @@ const Cart = (props: any) => {
     coupons();
   }, []);
   const onApplyCoupon = () => {
-    systemCoupon.forEach((element:any) => {
+    systemCoupon.forEach((element: any) => {
       if (element?.code === userCouponCode) {
-        console.log(element?.code);
         setDiscountPercentage(Number(element?.discount));
-        const discountedAmount = (discountPercentage / 100) * +totalAmount;
-        const totalAmountAfterDiscount = +totalAmount - discountedAmount;
-        console.log(totalAmountAfterDiscount);
-        setAmountAfterDiscount(totalAmountAfterDiscount)
-        setCouponError('')
+        if(discountPercentage !== 0){
+
+          const discountedAmount = (discountPercentage / 100) * +totalAmount;
+          const totalAmountAfterDiscount = +totalAmount - discountedAmount;
+          console.log(totalAmountAfterDiscount);
+          setAmountAfterDiscount(totalAmountAfterDiscount);
+          setCouponError("");
+        }
       } else {
         console.log("not matched");
-        setCouponError('Invalid coupon')
+        setCouponError("Invalid coupon");
       }
     });
-    // console.log(systemCoupon)
-    console.log(userCouponCode);
-    
   };
-  console.log(typeof discountPercentage);
 
   const cartItems = (
     <ul style={{ color: "white" }}>
@@ -135,13 +133,13 @@ const Cart = (props: any) => {
   return (
     <main className="min-h-screen">
       <div className="text-black mx-5 my-5 py-5 md:px-5 border-[1px] border-black rounded-lg">
-        <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
-          <div className="flex items-center flex-col">
             {hasItems ? (
-              <h1 className="text-black font-bold text-3xl">Cart Items</h1>
+            <h1 className="text-black font-bold text-3xl">Cart Items</h1>
             ) : (
               ""
             )}
+        <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
+          <div className="flex items-center justify-evenly  w-full ">
             <div className="">
               {hasItems ? (
                 cartItems
@@ -164,8 +162,9 @@ const Cart = (props: any) => {
             </div>
             <br />
             <br />
+          
             {hasItems ? (
-              <div className="flex items-center flex-col md:flex-row gap-6">
+              <div className="flex items-center flex-col  gap-6">
                 <div>
                   <h1 className="text-2xl">use coupon</h1>
                   <input
@@ -185,10 +184,12 @@ const Cart = (props: any) => {
                   </button>
                 </div>
                 {couponError && <p className="text-red-600">{couponError}</p>}
+                <div>
+
                 <h1 className="text-xl text-black font-semibold">
                   {" "}
                   Total Amount :{" "}
-                  {amountAfterDiscount>0 ? amountAfterDiscount : +totalAmount}
+                  {amountAfterDiscount > 0 ? amountAfterDiscount : +totalAmount}
                 </h1>
                 <div className=" flex  gap-6 flex-wrap">
                   <button
@@ -206,6 +207,7 @@ const Cart = (props: any) => {
                     </button>
                   )}
                 </div>
+                </div>
               </div>
             ) : (
               ""
@@ -215,7 +217,14 @@ const Cart = (props: any) => {
       </div>
 
       <div className="mx-10  hidden md:block">
-        <h1 className="text-2xl ">Continue shopping with us</h1>
+        <div className="flex items-center justify-between px-20">
+          <h1 className="text-2xl ">Continue shopping with us</h1>
+          <Link href={"/order"}>
+            <button className="rounded-md bg-indigo-600 text-white px-4 py-2">
+              View Orders
+            </button>
+          </Link>
+        </div>
         <ProductsItems />
       </div>
       <div className="  md:hidden my-5">

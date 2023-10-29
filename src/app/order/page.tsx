@@ -146,24 +146,23 @@ export default function Order() {
               Your Order
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {order?.map((item: any) => {
+              {order?.map((item: any,index:number) => {
                 if (item?.uid === user.uid) {
                   return (
-                    <div key={item.uid}>
+                    <div key={item.uid} className="my-2" >
                       {item.items.map((item: any) => {
-                        console.log(item.title);
                          return(
                             <Link href={`${item.id}`} key={item.id} >
-                            <div key={item.id} className="flex gap-4" >
+                            <div key={item.id} className="flex gap-4  " >
 
                                 <section>
                                     <Image src={item.image} alt="" width={100} height={100} className="rounded-md" />
                                 </section>
                                 <section>
                                     <h1>Title: {item.title} </h1>
-                                    <h1>Price: {item.price}</h1>
+                                    <h1>Price: Rs {item.price}</h1>
                                     <h1>Amount: {item.amount}</h1>
-                                    <h1>Size : {item.size.name} </h1>
+                                    <h1>Size : {item.size.fullname} </h1>
 
                                 </section>
                             </div>

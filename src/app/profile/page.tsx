@@ -1,17 +1,18 @@
 "use client";
 import { PaperClipIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { UserAuth } from "../Context/AuthContext";
 import toast from "react-hot-toast";
 import SigninForm from "../Components/SigninForm";
 import { FcGoogle } from "react-icons/fc";
-import { useState ,useEffect } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../../public/logo.png";
 import avatar from "../../../public/assets/avatar.svg";
 import login from "../../../public/svgFiles/login.svg";
 import { db } from "../firebase/config";
-import { collection, doc,getDocs } from "firebase/firestore";
+import { collection, doc, getDocs } from "firebase/firestore";
 
 export default function NewProfile() {
   const { user, googleSignIn, signout }: any = UserAuth();
@@ -21,7 +22,7 @@ export default function NewProfile() {
     email: "",
     password: "",
   });
-  const [address,setAddress] = useState([{}]);
+  const [address, setAddress] = useState([{}]);
   const onSinginHandler = async () => {
     await googleSignIn();
     toast.success("Login Success");
@@ -29,18 +30,17 @@ export default function NewProfile() {
   const onMoodChange = () => {
     setMood((prevState) => !prevState);
   };
-  const getAddress = async()=>{
-    const dbRef = collection(db,'address');
+  const getAddress = async () => {
+    const dbRef = collection(db, "address");
     const response = await getDocs(dbRef);
     const data = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    setAddress(data)
-
-  }
-  useEffect(()=>{
+    setAddress(data);
+  };
+  useEffect(() => {
     getAddress();
-  },[])
-  console.log(address)
-  console.log(user?.uid)
+  }, []);
+  console.log(address);
+  console.log(user?.uid);
   if (!user) {
     return (
       <>
@@ -76,44 +76,46 @@ export default function NewProfile() {
           Welcome Back
         </h3>
         <div className="flex  items-center justify-between  my-3  ">
-            <div className="flex gap-6 items-center">
-          <section>
-            {user.photoURL ? (
-              <Image
-                src={user?.photoURL}
-                alt="profile Image"
-                width={50}
-                height={50}
-                className="rounded-full"
-              />
-            ) : (
-              <Image
-                src={avatar}
-                alt="avatar"
-                width={50}
-                height={50}
-                className="rounded-full"
-              />
-            )}
-          </section>
-          <p className=" md:text-3xl text-xl font-bold leading-6 ">
-            {user?.displayName}
-          </p>
-            </div>
-            <div>
+          <div className="flex gap-6 items-center">
+            <section>
+              {user.photoURL ? (
+                <Image
+                  src={user?.photoURL}
+                  alt="profile Image"
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+              ) : (
+                <Image
+                  src={avatar}
+                  alt="avatar"
+                  width={50}
+                  height={50}
+                  className="rounded-full"
+                />
+              )}
+            </section>
+            <p className=" md:text-3xl text-xl font-bold leading-6 ">
+              {user?.displayName}
+            </p>
+          </div>
+          <div className="flex flex-col gap-3" >
             <button
-        className="bg-blue-600 text-xl px-4 py-2 rounded-lg text-white"
-        onClick={onSignoutHandler}
+              className="bg-blue-600 text-xl px-4 py-2 rounded-lg text-white"
+              onClick={onSignoutHandler}
+            >
+              Sign out
+            </button>
+            <Link href={'/order'} >
+            <button
+        className="bg-blue-600 text-xl px-4 py-2 rounded-lg text-white hidden md:block "
+        
       >
-        Sign out
+        View Order
       </button>
-            {/* <button
-        className="bg-blue-600 text-xl px-4 py-2 rounded-lg text-white"
-        onClick={getAddress}
-      >
-        Get Address
-      </button> */}
-            </div>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="mt-6 border-t border-gray-100">
@@ -150,26 +152,26 @@ export default function NewProfile() {
             <dt className="text-sm font-medium leading-6 text-gray-900">
               Address
             </dt>
-            
-              {/* {user?.email} */}
-              {
-                address?.map((item:any)=>{
-                  if(item?.uid === user.uid){
-                    return(
-                      <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" key={item.uid} > 
-                        {item.details.address1}
-                        <br />
-                        {item.details.city}
-                        <br />
-                        {item.details.state}
-                        <br />
-                        {item.details.postal}
-                        </dd>
-                    )
-                  }
-                })
+
+            {/* {user?.email} */}
+            {address?.map((item: any) => {
+              if (item?.uid === user.uid) {
+                return (
+                  <dd
+                    className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+                    key={item.uid}
+                  >
+                    {item.details.address1}
+                    <br />
+                    {item.details.city}
+                    <br />
+                    {item.details.state}
+                    <br />
+                    {item.details.postal}
+                  </dd>
+                );
               }
-            
+            })}
           </div>
 
           {/* salary Section  */}
@@ -177,18 +179,18 @@ export default function NewProfile() {
             <dt className="text-sm font-medium leading-6 text-gray-900">
               Contact
             </dt>
-            {
-                address?.map((item:any)=>{
-                  if(item?.uid === user.uid){
-                    return(
-                      <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" key={item.uid} > 
-                        {item.details.phone}
-                        
-                        </dd>
-                    )
-                  }
-                })
+            {address?.map((item: any) => {
+              if (item?.uid === user.uid) {
+                return (
+                  <dd
+                    className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+                    key={item.uid}
+                  >
+                    {item.details.phone}
+                  </dd>
+                );
               }
+            })}
           </div>
 
           {/* about section  */}
