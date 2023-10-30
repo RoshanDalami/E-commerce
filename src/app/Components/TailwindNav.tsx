@@ -23,6 +23,7 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import SearchBar from "./SearchBar";
 import logo from "../../../public/newLogo.png";
 import image1 from "../../../public/reduced/hero_image_1.jpg";
 import CartContext from "../Store/Cart-context";
@@ -615,15 +616,15 @@ export default function TailwindNav() {
               </Popover.Group>
 
               <div className="ml-auto flex items-center">
-                <div className="border-2 border-gray-300 rounded-md  flex items-center  mx-3 ">
+                {/* <div className="border-2 border-gray-300 rounded-md  flex items-center  mx-3 ">
                   <input
                     type="text"
                     className=" py-1 px-4 w-full rounded-md focus:outline-none "
                     placeholder="Search within Weugly "
                   />
                   <BsSearchHeartFill className="text-2xl mx-3" />
-                </div>
-                {/* <SearchBar/> */}
+                </div> */}
+                <SearchBar/>
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {user ? (
                     user.photoURL ? (

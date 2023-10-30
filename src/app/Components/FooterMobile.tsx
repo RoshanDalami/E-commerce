@@ -88,7 +88,7 @@ export default function Footer() {
   ]
   return (
     <>
-      <main className=" md:hidden sticky bottom-0 z-50">
+      <main className=" md:hidden sticky bottom-0 z-40">
         <footer>
           <nav className="bg-white border-t-[1px] border-gray-500  pt-4  h-[70px] flex items-center justify-center gap-10">
             <div>
