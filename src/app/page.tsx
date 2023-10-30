@@ -29,7 +29,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <main className=" overflow-hidden ">
+      <main className=" overflow-hidden  ">
         <TopMarquee />
         <div className=" ">
           <HomeSectionPage />
@@ -77,7 +77,7 @@ export default function Home() {
           <span className="text-4xl font-bold px-2 md:px-10">OverSized T-shirts</span>
         </div>
         <div className="flex items-center justify-center" >
-          <CategoriesPage />
+          <CategoriesPage link='tshirts' />
         </div>
         <div className="px-5 py-4 flex gap-6 flex-wrap items-center justify-center ">
           {products?.map((item: any,index:number) => {
@@ -101,7 +101,7 @@ export default function Home() {
           <span className="text-4xl font-bold px-2 md:px-10">Hoodies</span>
         </div>
         <div className="flex items-center justify-center" >
-          <CategoriesPage />
+          <CategoriesPage link='comingsoon'  />
         </div>
         <div className="px-5 py-4 flex gap-6 flex-wrap items-center justify-center ">
           {products?.map((item: any,index:number) => {

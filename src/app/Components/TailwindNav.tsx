@@ -34,6 +34,7 @@ import { useRouter } from "next/navigation";
 
 import { BsSearchHeartFill } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
+
 const navigation = {
   categories: [
     {
@@ -622,6 +623,7 @@ export default function TailwindNav() {
                   />
                   <BsSearchHeartFill className="text-2xl mx-3" />
                 </div>
+                {/* <SearchBar/> */}
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   {user ? (
                     user.photoURL ? (

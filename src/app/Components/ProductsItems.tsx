@@ -20,16 +20,18 @@ export default function ProductsItems(){
     return(
         <div className="px-5 py-4 flex gap-6 flex-wrap items-center justify-center ">
         {products?.map((item: any) => {
-          return (
-            <ProductCard
-              key={item.id}
-              image={item.imageulr}
-              price={item.price}
-              title={item.title}
-              description={item.description}
-              id={item.id}
-            />
-          );
+          if(item.section === 'men' && item.category === 'oversizeTshirt'){
+            return (
+              <ProductCard
+                key={item.id}
+                image={item.imageulr}
+                price={item.price}
+                title={item.title}
+                description={item.description}
+                id={item.id}
+              />
+            );
+          }
         })}
       </div>
     )
