@@ -50,7 +50,7 @@ export default function Footer() {
     {
       id: "1",
       title: "Return Policy",
-      link: "/",
+      link: "/return",
     },
     {
       id: "2",
@@ -130,10 +130,11 @@ export default function Footer() {
           </nav>
         </footer>
       </main>
-      <main className="hidden md:flex bg-slate-100 h-[200px] mt-20 justify-between  px-20 py-5 ">
-        <section>
-          <Image src={logo} alt="logo"  width={150} height={150} />
-        </section>
+      <main className="hidden md:flex bg-orange-700/10  mt-20  flex-col px-20  w-full  items-center ">
+      
+          <Image src={logo} alt="logo"  width={250} height={150} className="" />
+        
+        <div className="flex  px-20 py-5 w-full justify-between">
         <section>
           <h1 className="text-xl font-bold">Products</h1>
           <div>
@@ -184,6 +185,7 @@ export default function Footer() {
             })}
           </div>
         </section>
+        </div>
       </main>
     </>
   );

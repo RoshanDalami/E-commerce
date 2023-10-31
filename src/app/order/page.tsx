@@ -146,11 +146,11 @@ export default function Order() {
               Your Order
             </dt>
             <dd className=" flex flex-wrap mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {order?.map((item: any,index:number) => {
-                if (item?.uid === user.uid) {
+              {order?.map((items: any,index:number) => {
+                if (items?.uid === user.uid) {
                   return (
-                    <div key={item.uid} className="my-2" >
-                      {item.items.map((item: any) => {
+                    <div key={items.uid} className="my-2" >
+                      {items.items.map((item: any) => {
                          return(
                             <Link href={`${item.id}`} key={item.id} >
                             <div key={item.id} className="flex gap-4  mx-3 " >
@@ -163,7 +163,7 @@ export default function Order() {
                                     <h1>Price: Rs {item.price}</h1>
                                     <h1>Amount: {item.amount}</h1>
                                     <h1>Size : {item.size.fullname} </h1>
-
+                                    <p>Order Id: {items.id}</p>
                                 </section>
                             </div>
                             </Link>

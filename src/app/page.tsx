@@ -51,8 +51,10 @@ export default function Home() {
           </div>
           <CategoriesCard />
         </div> */}
-        <div>
+        <div className="mt-5 md:mt-0">
+          <Link href={'/comingsoon'} >
           <Image src={SeasonalPormo} alt="seasonl discount" />
+          </Link>
         </div>
         <div className="my-10">
           <div className="md:mx-8 mx-4 md:my-6 my-4">
