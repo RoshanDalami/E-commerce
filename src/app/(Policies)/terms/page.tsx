@@ -16,7 +16,7 @@ export default function Terms() {
           className="text-5xl hidden md:block  mt-10 ml-10 cursor-pointer bg-gray-600/20  p-3 rounded-full   "
           onClick={onBackHandler}
         />
-    <div className="p-20 flex flex-col gap-8">
+    <div className= " p-4 md:p-20 flex flex-col gap-8">
       <div className="flex flex-col gap-3" >
         <h1 className="text-3xl font-bold" >Terms and Conditions</h1>
         <p className="text-xl opacity-80">
