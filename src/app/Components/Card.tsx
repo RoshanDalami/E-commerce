@@ -60,7 +60,11 @@ export default function ProductCard(props: any) {
           <h1 className="text-xl font-bold">{props.title}</h1>
           <p className=" opacity-50">{props.description}</p>
           <div className="flex justify-between items-center">
+            <div className="flex gap-1">
+
             <p>Rs. {props.price}</p>
+            <p className=" line-through opacity-50" >Rs. {props.price}</p>
+            </div>
             <div>
             <Link href={`/${props.id}`}>
             <button
