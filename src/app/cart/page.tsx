@@ -17,13 +17,15 @@ const Cart = (props: any) => {
   const [address, setAddress]: any = useState({});
   const { user }: any = UserAuth();
   const router = useRouter();
-  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}`;
+  let totalAmount = Number(`${cartCtx.totalAmount.toFixed(2)}`);
   const hasItems = cartCtx.items.length > 0;
   const [userCouponCode, setUserCouponCode] = useState("");
   const [systemCoupon, setSystemCoupon] = useState([{}]);
   const [discountPercentage, setDiscountPercentage] = useState(0);
   const [couponError, setCouponError] = useState("");
   const [amountAfterDiscount, setAmountAfterDiscount] = useState(0);
+  const [orders, setOrders] = useState([{}]);
+  const [firstOrder, setFirstOrder] = useState(false);
 
   const cartItemRemoveHandler = (id: string) => {
     cartCtx.removeItem(id);
@@ -54,29 +56,27 @@ const Cart = (props: any) => {
   }, [user?.uid]);
   useEffect(() => {
     getAddress();
-  }, [getAddress]);
-  const onOrder = async () => {
-    const items = cartCtx.items;
-    let totalAmount = cartCtx.totalAmount;
-    const payload = user?.uid;
-    if (Object.keys(address).length === 0) {
-      router.replace("/address");
-      return;
-    }
-    if (discountPercentage > 0) {
-      totalAmount = amountAfterDiscount;
-    }
+  }, []);
+  const getOrders = async () => {
+    const dbRef = collection(db, "orders");
     try {
-      const dbRef = collection(db, "orders");
-      await addDoc(dbRef, { items, totalAmount, uid: payload, address });
-      console.log("order complete");
-      console.log(items);
-      cartCtx.order();
-      router.push("/orderplaced");
+      const response = await getDocs(dbRef);
+      const data = response.docs.map((doc) => ({ ...doc.data() }));
+      for (let i = 0; i <= data.length; i++) {
+        if (data[i].uid !== user.uid) {
+          setFirstOrder(true);
+        } else {
+          console.log("Not first Order");
+        }
+      }
     } catch (error) {
-      console.log("error" + error);
+      console.error("Error fetching orders");
     }
   };
+  useEffect(() => {
+    getOrders();
+  }, []);
+
   const coupons = async () => {
     try {
       const dbRef = collection(db, "coupon");
@@ -94,8 +94,7 @@ const Cart = (props: any) => {
     systemCoupon.forEach((element: any) => {
       if (element?.code === userCouponCode) {
         setDiscountPercentage(Number(element?.discount));
-        if(discountPercentage !== 0){
-
+        if (discountPercentage !== 0) {
           const discountedAmount = (discountPercentage / 100) * +totalAmount;
           const totalAmountAfterDiscount = +totalAmount - discountedAmount;
           console.log(totalAmountAfterDiscount);
@@ -107,6 +106,35 @@ const Cart = (props: any) => {
         setCouponError("Invalid coupon");
       }
     });
+  };
+  const onOrder = async () => {
+    const items = cartCtx.items;
+    let totalAmount = cartCtx.totalAmount;
+    const payload = user?.uid;
+    if (Object.keys(address).length === 0) {
+      router.replace("/address");
+      return;
+    }
+    if (discountPercentage > 0) {
+      totalAmount = amountAfterDiscount;
+    }
+    try {
+      const dbRef = collection(db, "orders");
+      await addDoc(dbRef, {
+        items,
+        totalAmount,
+        uid: payload,
+        address,
+        userCouponCode,
+      });
+      console.log("order complete");
+      console.log(userCouponCode)
+      console.log(items);
+      cartCtx.order();
+      router.push("/orderplaced");
+    } catch (error) {
+      console.log("error" + error);
+    }
   };
 
   const cartItems = (
@@ -133,11 +161,11 @@ const Cart = (props: any) => {
   return (
     <main className="min-h-screen">
       <div className="text-black mx-5 my-5 py-5 md:px-5 border-[1px] border-black rounded-lg">
-            {hasItems ? (
-            <h1 className="text-black font-bold text-3xl">Cart Items</h1>
-            ) : (
-              ""
-            )}
+        {hasItems ? (
+          <h1 className="text-black font-bold text-3xl">Cart Items</h1>
+        ) : (
+          ""
+        )}
         <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
           <div className="flex items-center justify-evenly  w-full ">
             <div className="">
@@ -162,7 +190,7 @@ const Cart = (props: any) => {
             </div>
             <br />
             <br />
-          
+
             {hasItems ? (
               <div className="flex items-center flex-col  gap-6">
                 <div>
@@ -185,28 +213,29 @@ const Cart = (props: any) => {
                 </div>
                 {couponError && <p className="text-red-600">{couponError}</p>}
                 <div>
-
-                <h1 className="text-xl text-black font-semibold">
-                  {" "}
-                  Total Amount :{" "}
-                  {amountAfterDiscount > 0 ? amountAfterDiscount : +totalAmount}
-                </h1>
-                <div className=" flex  gap-6 flex-wrap">
-                  <button
-                    onClick={goToProducts}
-                    className=" border-[1px] border-red-600 rounded-lg px-4 py-2 text-red-600 hover:bg-red-600 hover:text-white transition ease-in-out duration-300 "
-                  >
-                    Cancel
-                  </button>
-                  {hasItems && (
+                  <h1 className="text-xl text-black font-semibold">
+                    {" "}
+                    Total Amount :{" "}
+                    {amountAfterDiscount > 0
+                      ? amountAfterDiscount
+                      : +totalAmount}
+                  </h1>
+                  <div className=" flex  gap-6 flex-wrap">
                     <button
-                      onClick={onOrder}
-                      className="border-[1px] border-blue-600 rounded-lg px-5 py-2 bg-blue-600 text-white transition ease-in-out duration-300  "
+                      onClick={goToProducts}
+                      className=" border-[1px] border-red-600 rounded-lg px-4 py-2 text-red-600 hover:bg-red-600 hover:text-white transition ease-in-out duration-300 "
                     >
-                      Order
+                      Cancel
                     </button>
-                  )}
-                </div>
+                    {hasItems && (
+                      <button
+                        onClick={onOrder}
+                        className="border-[1px] border-blue-600 rounded-lg px-5 py-2 bg-blue-600 text-white transition ease-in-out duration-300  "
+                      >
+                        Order
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             ) : (

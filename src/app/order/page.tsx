@@ -145,7 +145,7 @@ export default function Order() {
             <dt className="text-sm font-medium leading-6 text-gray-900">
               Your Order
             </dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+            <dd className=" flex flex-wrap mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               {order?.map((item: any,index:number) => {
                 if (item?.uid === user.uid) {
                   return (
@@ -153,7 +153,7 @@ export default function Order() {
                       {item.items.map((item: any) => {
                          return(
                             <Link href={`${item.id}`} key={item.id} >
-                            <div key={item.id} className="flex gap-4  " >
+                            <div key={item.id} className="flex gap-4  mx-3 " >
 
                                 <section>
                                     <Image src={item.image} alt="" width={100} height={100} className="rounded-md" />

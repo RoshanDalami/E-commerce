@@ -15,6 +15,9 @@ import TopMarquee from "./Components/TopMarquee";
 import HomeNewArrival from "./Components/HomeNewArrival";
 import Promo from "./Components/Promo";
 
+//image import 
+import SeasonalPormo from '../../public/seasonal.jpg'
+
 export default function Home() {
   const [products, setProducts] = useState([{}]);
 
@@ -48,6 +51,9 @@ export default function Home() {
           </div>
           <CategoriesCard />
         </div> */}
+        <div>
+          <Image src={SeasonalPormo} alt="seasonl discount" />
+        </div>
         <div className="my-10">
           <div className="md:mx-8 mx-4 md:my-6 my-4">
             <Link href={"/categories"}>
