@@ -55,12 +55,12 @@ export default function Footer() {
     {
       id: "2",
       title: "Terms and Conditions",
-      link: "/",
+      link: "/terms",
     },
     {
       id: "3",
       title: "Privacy Policy",
-      link: "/",
+      link: "/privacy",
     },
   ];
   const Socials = [

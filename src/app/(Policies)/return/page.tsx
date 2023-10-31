@@ -1,7 +1,20 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
+import { BiArrowBack } from "react-icons/bi";
+import { useRouter } from 'next/navigation';
 export default function Return() {
+    const router = useRouter();
+    const onBackHandler = () => {
+        router.push("/");
+      };
   return (
+    <>
+    
+          <BiArrowBack
+          className="text-5xl hidden md:block  mt-10 ml-10 cursor-pointer bg-gray-600/20  p-3 rounded-full   "
+          onClick={onBackHandler}
+        />
     <div className='p-20 flex flex-col gap-10 ' >
         <div className='flex flex-col gap-3'>
             <h1 className='text-3xl font-bold'>
@@ -39,5 +52,6 @@ export default function Return() {
         </div>
       
     </div>
+    </>
   )
 }
