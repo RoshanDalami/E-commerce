@@ -167,7 +167,7 @@ const Cart = (props: any) => {
           ""
         )}
         <div className="flex justify-center items-center mx-3 md:px-10 gap-20 ">
-          <div className="flex items-center justify-evenly  w-full ">
+          <div className="flex flex-col md:flex-row items-center justify-evenly  w-full ">
             <div className="">
               {hasItems ? (
                 cartItems
