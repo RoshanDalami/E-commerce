@@ -312,7 +312,7 @@ export default function TailwindNav() {
                                   src={item.imageSrc}
                                   alt={item.imageAlt}
                                   className="object-cover object-center"
-                                  width={50}
+                                  width={200}
                                   height={50}
                                 />
                               </div>
