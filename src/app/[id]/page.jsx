@@ -45,6 +45,7 @@ export default function IndividualProduct() {
     imageulr: "",
     price: "",
     title: "",
+    afterDiscountPrice:'',
     description: "",
     id: "",
     pid:"",
@@ -55,6 +56,7 @@ export default function IndividualProduct() {
       id: id,
       title: individualProduct?.title,
       price: individualProduct?.price,
+      afterDiscountPrice:individualProduct?.afterDiscountPrice,
       amount: amount,
       image: individualProduct?.imageulr,
       size: selectedSize,
@@ -85,6 +87,7 @@ export default function IndividualProduct() {
       id: id,
       title: individualProduct?.title,
       price: individualProduct?.price,
+      afterDiscountPrice:individualProduct?.afterDiscountPrice,
       amount: amount,
       image: individualProduct?.imageulr,
       size: selectedSize,
@@ -170,7 +173,11 @@ export default function IndividualProduct() {
             <div className="flex flex-col gap-2 md:gap-10">
               <h1 className="text-3xl font-bold">{individualProduct?.title}</h1>
               <h1 className=" opacity-60">{individualProduct?.description}</h1>
-              <h1 className="text-xl"> Rs {individualProduct?.price}</h1>
+              <div>
+
+              <h1 className="text-xl"> Rs. {individualProduct?.price}</h1>
+              <h1 className=" line-through text-xl opacity-60" > Rs. {individualProduct?.afterDiscountPrice}</h1>
+              </div>
             </div>
             <div className="flex gap-2 flex-col   ">
               <div className="flex justify-between ">

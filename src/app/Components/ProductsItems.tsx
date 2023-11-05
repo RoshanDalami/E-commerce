@@ -26,6 +26,7 @@ export default function ProductsItems(){
                 key={item.id}
                 image={item.imageulr}
                 price={item.price}
+                afterDiscount={item.afterDiscountPrice}
                 title={item.title}
                 description={item.description}
                 id={item.id}

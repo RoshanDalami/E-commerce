@@ -11,22 +11,22 @@ export default function Footer() {
     {
       id: "1",
       title: "Hoodies",
-      link: "/",
+      link: "/categories",
     },
     {
       id: "2",
       title: "Sweat Shirts",
-      link: "/",
+      link: "/categories",
     },
     {
       id: "3",
       title: "Over Sized T-shirts",
-      link: "/",
+      link: "/categories",
     },
     {
       id: "4",
       title: "Jogger",
-      link: "/",
+      link: "/categories",
     },
   ];
   const Details = [

@@ -63,7 +63,7 @@ export default function ProductCard(props: any) {
             <div className="flex gap-1">
 
             <p>Rs. {props.price}</p>
-            <p className=" line-through opacity-50" >Rs. {props.price}</p>
+            <p className=" line-through opacity-50" >Rs. {props.afterDiscount}</p>
             </div>
             <div>
             <Link href={`/${props.id}`}>

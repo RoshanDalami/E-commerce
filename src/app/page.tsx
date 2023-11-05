@@ -30,6 +30,7 @@ export default function Home() {
   useEffect(() => {
     getProducts();
   }, []);
+  console.log(products)
   return (
     <>
       <main className=" overflow-hidden  ">
@@ -94,6 +95,7 @@ export default function Home() {
                 <ProductCard
                   key={nanoid()}
                   image={item.imageulr}
+                  afterDiscount={item.afterDiscountPrice}
                   price={item.price}
                   title={item.title}
                   description={item.description}
@@ -118,6 +120,7 @@ export default function Home() {
                 <ProductCard
                   key={nanoid()}
                   image={item.imageulr}
+                  afterDiscount={item.afterDiscountPrice}
                   price={item.price}
                   title={item.title}
                   description={item.description}
