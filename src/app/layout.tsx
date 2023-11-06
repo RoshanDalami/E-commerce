@@ -25,6 +25,7 @@ export default  function RootLayout({
   
   return (
     <html lang="en">
+      <title>We ugly</title>
       <body className={inter.className}>
         <AuthContextProvider>
           <CartProvider>
