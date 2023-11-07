@@ -164,6 +164,8 @@ export default function Order() {
                                     <h1>Amount: {item.amount}</h1>
                                     <h1>Size : {item.size.fullname} </h1>
                                     <p>Order Id: {items.id}</p>
+                                    <p>Status: {items.status}</p>
+
                                 </section>
                             </div>
                             </Link>

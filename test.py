@@ -1,10 +1,13 @@
 
+user_input = input('Enter 1 for sign up\n Enter 2 for sign in\n Enter 3 to Quit Application \n')
+
 
 user_data = []
 
 special_char = ['!','@','#','$','*','&','%','(',')']
+print(user_input)
 
-while True:
+while user_input == '1':
     full_name = input("Enter the full name of the customer: ")
 
     contact_number = input("Enter the contact number of the customer: ")
@@ -22,7 +25,7 @@ while True:
     for char in password:
         if char.isalpha():
             has_alphabet = True
-        elif char.isdigit() or not char.isalnum():
+        elif char.isdigit() or char in special_char:
             has_digit_or_special = True
         
     if has_alphabet and has_digit_or_special:
@@ -55,4 +58,8 @@ while True:
     })
 
     print("Signup process completed successfully.")
+    break
+
+while user_data == '3':
+    print('Thank you for using the Application')
     break

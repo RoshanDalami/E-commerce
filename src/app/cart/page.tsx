@@ -110,6 +110,7 @@ const Cart = (props: any) => {
   const onOrder = async () => {
     const items = cartCtx.items;
     let totalAmount = cartCtx.totalAmount;
+    let status = 'packing'
     const payload = user?.uid;
     if (Object.keys(address).length === 0) {
       router.replace("/address");
@@ -126,6 +127,7 @@ const Cart = (props: any) => {
         uid: payload,
         address,
         userCouponCode,
+        status
       });
       console.log("order complete");
       console.log(userCouponCode)
