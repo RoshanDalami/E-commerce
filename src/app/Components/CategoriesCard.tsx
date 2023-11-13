@@ -93,11 +93,11 @@ export default function CategoriesCard() {
         return (
           <div
             key={items.id}
-            className="border-2 border-[#FFA500]/70 rounded-md cursor-pointer "
+            className="border-[1px] border-gray-300 w-[300px] p-4 rounded-md cursor-pointer "
           >
             <Link href={items.link}>
-            <div className=" bg-gray-300 overflow-hidden  ">
-              <div className="hover:scale-110 transition ease-in-out duration-300 ">
+            <div className=" overflow-hidden  ">
+              <div className="hover:scale-110 flex items-center  transition ease-in-out duration-300 ">
                 <Image
                   src={items.image}
                   alt=""
@@ -107,8 +107,8 @@ export default function CategoriesCard() {
                   />
               </div>
             </div>
-            <div className="flex items-center h-[50px]  justify-center bg-white overflow-hidden rounded-b-md ">
-              <h1 className=" text-3xl font-medium px-3 ">{items.title}</h1>
+            <div className="flex items-center h-[50px]  justify-center bg-white overflow-hidden  ">
+              <h1 className=" text-xl font-medium px-3 ">{items.title}</h1>
             </div>
                   </Link>
           </div>
