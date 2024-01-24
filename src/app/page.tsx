@@ -33,25 +33,19 @@ export default function Home() {
   console.log(products)
   return (
     <>
-      <main className=" overflow-hidden  ">
+    <div className="min-h-screen flex items-center justify-center">
+    <h1 className="text-4xl font-bold">This site is terminated due to payment issue.</h1>
+    </div>
+      {/* <main className=" overflow-hidden  ">
         <TopMarquee />
         <div className=" ">
           <HomeSectionPage />
         </div>
-        {/* <MidBanner /> */}
+
         <div className="md:my-10 " >
         <Promo/>
         </div>
-        {/* <div>
-          <div className="mx-8 my-6">
-            <Link href={"/categories"}>
-              <h1 className="bg-black text-white font-bold text-2xl inline px-3 py-3 rounded-full ">
-                Categories
-              </h1>
-            </Link>
-          </div>
-          <CategoriesCard />
-        </div> */}
+        
         <div className="mt-5 md:mt-0">
           <Link href={'/comingsoon'} >
           <Image src={SeasonalPormo} alt="seasonl discount" />
@@ -81,7 +75,7 @@ export default function Home() {
             <HomeNewArrival />
           </div>
         </div>
-        {/* oversized tshirts  */}
+
         <div className="px-4 py-10 md:px-5 md:py-3">
           <span className="text-4xl font-bold px-2 md:px-10">OverSized T-shirts</span>
         </div>
@@ -106,7 +100,7 @@ export default function Home() {
             return null
           })}
         </div>
-          {/* Hoodies  */}
+
         <div className="px-4 py-10 md:px-5 md:py-3">
           <span className="text-4xl font-bold px-2 md:px-10">Hoodies</span>
         </div>
@@ -135,7 +129,7 @@ export default function Home() {
         
         <Image src={'/svgFiles/whatsappNew.svg'} alt="" width={50} height={50} className="fixed right-3 bottom-20 md:hidden z-50   " />
         </Link>
-      </main>
+      </main> */}
     </>
   );
 }
