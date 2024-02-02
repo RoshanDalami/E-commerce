@@ -33,9 +33,9 @@ export default  function RootLayout({
 
             <Toaster position="top-center" reverseOrder={false} />
             {/* <Navbar /> */}
-            {/* <TailwindNav/> */}
+            <TailwindNav/>
             {children}
-            {/* <Footer/> */}
+            <Footer/>
             </WishProvider>
           </CartProvider>
         </AuthContextProvider>

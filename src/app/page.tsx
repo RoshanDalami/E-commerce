@@ -33,10 +33,8 @@ export default function Home() {
   console.log(products)
   return (
     <>
-    <div className="min-h-screen flex items-center justify-center">
-    <h1 className="text-4xl font-bold">This site is terminated due to payment issue.</h1>
-    </div>
-      {/* <main className=" overflow-hidden  ">
+   
+      <main className=" overflow-hidden  ">
         <TopMarquee />
         <div className=" ">
           <HomeSectionPage />
@@ -129,7 +127,7 @@ export default function Home() {
         
         <Image src={'/svgFiles/whatsappNew.svg'} alt="" width={50} height={50} className="fixed right-3 bottom-20 md:hidden z-50   " />
         </Link>
-      </main> */}
+      </main>
     </>
   );
 }
