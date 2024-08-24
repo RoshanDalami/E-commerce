@@ -38,60 +38,60 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 const navigation = {
   categories: [
-    {
-      id: "women",
-      name: "Women",
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "/comingsoon",
-          imageSrc: image1,
-          imageAlt:
-            "Models sitting back to back, wearing Basic Tee in black and bone.",
-        },
-        {
-          name: "Basic Tees",
-          href: "/comingsoon",
-          imageSrc: image1,
-          imageAlt:
-            "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Crop top", href: "/comingsoon" },
-            { name: "t-shirt dress", href: "/comingsoon" },
-            { name: "half sleeve tshirt", href: "/comingsoon" },
-          ],
-        },
-        {
-          id: "accessories",
-          // name: "Accessories",
-          items: [
-            // { name: "Watches", href: "/comingsoon" },
-            // { name: "Wallets", href: "/comingsoon" },
-            // { name: "Bags", href: "/comingsoon" },
-            // { name: "Sunglasses", href: "/comingsoon" },
-            // { name: "Hats", href: "/comingsoon" },
-            // { name: "Belts", href: "/comingsoon" },
-          ],
-        },
-        // {
-        //   id: "brands",
-        //   name: "Brands",
-        //   items: [
-        //     { name: "Full Nelson", href: "/comingsoon"},
-        //     { name: "My Way", href:"/comingsoon" },
-        //     { name: "Re-Arranged", href: "/comingsoon" },
-        //     { name: "Counterfeit", href: "/comingsoon"},
-        //     { name: "Significant Other", href: "/comingsoon" },
-        //   ],
-        // },
-      ],
-    },
+    // {
+    //   id: "women",
+    //   name: "Women",
+    //   featured: [
+    //     {
+    //       name: "New Arrivals",
+    //       href: "/comingsoon",
+    //       imageSrc: image1,
+    //       imageAlt:
+    //         "Models sitting back to back, wearing Basic Tee in black and bone.",
+    //     },
+    //     {
+    //       name: "Basic Tees",
+    //       href: "/comingsoon",
+    //       imageSrc: image1,
+    //       imageAlt:
+    //         "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
+    //     },
+    //   ],
+    //   sections: [
+    //     {
+    //       id: "clothing",
+    //       name: "Clothing",
+    //       items: [
+    //         { name: "Crop top", href: "/comingsoon" },
+    //         { name: "t-shirt dress", href: "/comingsoon" },
+    //         { name: "half sleeve tshirt", href: "/comingsoon" },
+    //       ],
+    //     },
+    //     {
+    //       id: "accessories",
+    //       name: "Accessories",
+    //       items: [
+    //         { name: "Watches", href: "/comingsoon" },
+    //         { name: "Wallets", href: "/comingsoon" },
+    //         { name: "Bags", href: "/comingsoon" },
+    //         { name: "Sunglasses", href: "/comingsoon" },
+    //         { name: "Hats", href: "/comingsoon" },
+    //         { name: "Belts", href: "/comingsoon" },
+    //       ],
+    //     },
+    //     {
+    //       id: "brands",
+    //       name: "Brands",
+    //       items: [
+    //         { name: "Full Nelson", href: "/comingsoon"},
+    //         { name: "My Way", href:"/comingsoon" },
+    //         { name: "Re-Arranged", href: "/comingsoon" },
+    //         { name: "Counterfeit", href: "/comingsoon"},
+    //         { name: "Significant Other", href: "/comingsoon" },
+    //       ],
+    //     },
+    //   ],
+    // },
     {
       id: "men",
       name: "Men",
@@ -152,56 +152,56 @@ const navigation = {
         // },
       ],
     },
-    {
-      id: "men",
-      name: "Kids",
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "/comingsoon",
-          imageSrc: image1,
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Artwork Tees",
-          href: "/comingsoon",
-          imageSrc:
-            "https://firebasestorage.googleapis.com/v0/b/weugly-94422.appspot.com/o/blue2%20(1).png?alt=media&token=20cff6d6-e8aa-4412-b6a4-8798d5ee6596",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [{ name: "Rounded neck T-shirt", href: "/comingsoon" }],
-        },
-        {
-          id: "accessories",
-          // name: "Accessories",
-          items: [
-            // { name: "Watches", href: "/comingsoon" },
-            // { name: "Wallets", href: "/comingsoon" },
-            // { name: "Bags", href: "/comingsoon" },
-            // { name: "Sunglasses", href: "/comingsoon" },
-            // { name: "Hats", href: "/comingsoon"},
-            // { name: "Belts", href: "/comingsoon"},
-          ],
-        },
-        // {
-        //   id: "brands",
-        //   name: "Brands",
-        //   items: [
-        //     { name: "Re-Arranged", href: "#" },
-        //     { name: "Counterfeit", href: "#" },
-        //     { name: "Full Nelson", href: "#" },
-        //     { name: "My Way", href: "#" },
-        //   ],
-        // },
-      ],
-    },
+    // {
+    //   id: "men",
+    //   name: "Kids",
+    //   featured: [
+    //     {
+    //       name: "New Arrivals",
+    //       href: "/comingsoon",
+    //       imageSrc: image1,
+    //       imageAlt:
+    //         "Drawstring top with elastic loop closure and textured interior padding.",
+    //     },
+    //     {
+    //       name: "Artwork Tees",
+    //       href: "/comingsoon",
+    //       imageSrc:
+    //         "https://firebasestorage.googleapis.com/v0/b/weugly-94422.appspot.com/o/blue2%20(1).png?alt=media&token=20cff6d6-e8aa-4412-b6a4-8798d5ee6596",
+    //       imageAlt:
+    //         "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+    //     },
+    //   ],
+    //   sections: [
+    //     {
+    //       id: "clothing",
+    //       name: "Clothing",
+    //       items: [{ name: "Rounded neck T-shirt", href: "/comingsoon" }],
+    //     },
+    //     {
+    //       id: "accessories",
+    //       // name: "Accessories",
+    //       items: [
+    //         // { name: "Watches", href: "/comingsoon" },
+    //         // { name: "Wallets", href: "/comingsoon" },
+    //         // { name: "Bags", href: "/comingsoon" },
+    //         // { name: "Sunglasses", href: "/comingsoon" },
+    //         // { name: "Hats", href: "/comingsoon"},
+    //         // { name: "Belts", href: "/comingsoon"},
+    //       ],
+    //     },
+    //     // {
+    //     //   id: "brands",
+    //     //   name: "Brands",
+    //     //   items: [
+    //     //     { name: "Re-Arranged", href: "#" },
+    //     //     { name: "Counterfeit", href: "#" },
+    //     //     { name: "Full Nelson", href: "#" },
+    //     //     { name: "My Way", href: "#" },
+    //     //   ],
+    //     // },
+    //   ],
+    // },
   ],
   pages: [
     // { name: 'Company', href: '#' },
