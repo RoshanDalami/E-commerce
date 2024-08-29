@@ -17,72 +17,72 @@ import roundedneck from "../../../public/categories/roundneck.png";
 import oversize from "../../../public/reduced/hero_image_3.jpg";
 
 const Data = [
-  {
-    id: nanoid(),
-    title: "Hoodies",
-    image: hoodies,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Sweat Shirts",
-    image: sweatShirt,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Shorts",
-    image: shorts,
-    link: "/comingsoon",
-  },
+  // {
+  //   id: nanoid(),
+  //   title: "Hoodies",
+  //   image: hoodies,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Sweat Shirts",
+  //   image: sweatShirt,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Shorts",
+  //   image: shorts,
+  //   link: "/comingsoon",
+  // },
   {
     id: nanoid(),
     title: "Over Sized T-shirts",
     image: oversize,
     link: "/tshirts",
   },
-  {
-    id: nanoid(),
-    title: "Women Crop top",
-    image: croptop,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Collar T-shirt",
-    image: clooerman,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Zipper Hoodie",
-    image: zipHoodie,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Joggers",
-    image: jooger,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Half sleeve T-shirt",
-    image: halfshirt,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Full sleeve T-shirt",
-    image: fullsleeveman,
-    link: "/comingsoon",
-  },
-  {
-    id: nanoid(),
-    title: "Rounded neck T-shirt",
-    image: roundedneck,
-    link: "/comingsoon",
-  },
+  // {
+  //   id: nanoid(),
+  //   title: "Women Crop top",
+  //   image: croptop,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Collar T-shirt",
+  //   image: clooerman,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Zipper Hoodie",
+  //   image: zipHoodie,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Joggers",
+  //   image: jooger,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Half sleeve T-shirt",
+  //   image: halfshirt,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Full sleeve T-shirt",
+  //   image: fullsleeveman,
+  //   link: "/comingsoon",
+  // },
+  // {
+  //   id: nanoid(),
+  //   title: "Rounded neck T-shirt",
+  //   image: roundedneck,
+  //   link: "/comingsoon",
+  // },
  
 ];
 

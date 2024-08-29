@@ -135,7 +135,7 @@ export default function Footer() {
           <Image src={logo} alt="logo"  width={250} height={150} className="" />
         
         <div className="flex  px-20 py-5 w-full justify-between">
-        <section>
+        {/* <section>
           <h1 className="text-xl font-bold">Products</h1>
           <div>
             {Products.map((items) => {
@@ -146,7 +146,7 @@ export default function Footer() {
               );
             })}
           </div>
-        </section>
+        </section> */}
         <section>
           <h1 className="text-xl font-bold" >COMPANY</h1>
           <div>
